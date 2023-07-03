@@ -1,3 +1,12 @@
+---
+layout: '../layouts/DocumentationLayout.astro'
+title: Standardni ulaz i izlaz
+translation: "/en/standard-input-output"
+index: 2
+next: "/varijable"
+previous: "/pocetak"
+---
+
 # Standard input and output
 
 ## Output
@@ -5,19 +14,20 @@
 In Bosscript, there are multiple ways to print to the standard output, depending on what you want the message to look like.
 The function you will be using the most is definitely `ispis`, which is a standard printing function:
 
-```typescript
-ispis("Hello, world!");
-```
+<pre>
+ispis(<span class="string"><span class="string">"Hello, World!"</span></span>)<span class="keyword">;</span>
+</pre>
 
 The `ispis` function is very flexible. It takes in any number of arguments and arguments of any type. Here is an example:
 
-```typescript
-var name = "Bosscript";
-var version = 1.0
-ispis("Hello, my name is ", name, ". I am in version ", version);
+<pre>
+<span class="keyword">var</span> name = <span class="string">"Bosscript"</span><span class="keyword">;</span>
+<span class="keyword">var</span> version = <span class="number">1.0</span><span class="keyword">;</span>
+ispis(<span class="string">"Hello, my name is "</span>, name, <span class="string">". I am in version "</span>, version)<span class="keyword">;</span>
 
 // prints 'Hello, my name is Bosscript. I am in version 1.0'
-```
+</pre>
+
 Four arguments were passed to `ispis` and all four get printed to the console. For values that are not of type `tekst`, 
 Bosscript automatically converts them according to the standard library specification:
 
@@ -32,9 +42,9 @@ Native functions are stringified as such: `ƒ <name>() {[native code]}`.
 
 You can also pass any expression that evaluates to `tekst` to the `ispis` function:
 
-```typescript
-ispis("Hello, " + getName());
-```
+<pre>
+ispis(<span class="string">"Hello, "</span> + getName())<span class="keyword">;</span>
+</pre>
 
 ### Warning and Error
 
@@ -42,17 +52,17 @@ ispis("Hello, " + getName());
 warnings and errors to the standard output and come with built-in styling, similar to JavaScript's `console.warn` and `console.error`
 functions. 
 
-```typescript
-upozorenje("Empty output");
-```
+<pre>
+upozorenje(<span class="string">"Empty output"</span>)<span class="keyword">;</span>
+</pre>
 
 <code style="color: yellow">
 ⚠ Empty output
 </code>
 
-```typescript
-greska("Cannot divide by zero!");
-```
+<pre>
+greska(<span class="string">"Cannot divide by zero!"</span>)<span class="keyword">;</span>
+</pre>
 
 <code style="color: red">
 ⚠ Empty output
@@ -67,10 +77,11 @@ The built-in `unos` function is used to collect input from the user. The functio
 function - it is possible to pass a message that is printed before input is collected, and input is collected in one line
 and returned as a `tekst`. Consider the example below:
 
-```typescript
-var name = unos("Input your name: ");
-ispis("Hello " + name);
-```
+<pre>
+<span class="keyword">var</span> name = unos(<span class="string">"Input your name: "</span>)<span class="keyword">;</span>
+ispis(<span class="string">"Hello "</span> + name)<span class="keyword">;</span>
+</pre>
+
 
 <pre>
 Input your name: 
@@ -82,10 +93,11 @@ In this example, the user is asked to input their name. The prompt is passed to 
 The name is collected as a `tekst` and printed to the console. But what if you need to input a value that is not a `tekst`?
 Consider the example below:
 
-```typescript
-var age = brojOd(unos("How old are you: "));
-ispis(age);
-```
+<pre>
+<span class="keyword">var</span> age = brojOd(unos(<span class="string">"How old are you: "</span>))<span class="keyword">;</span>
+ispis(age)<span class="keyword">;</span>
+</pre>
+
 <pre>
 How old are you: 
 <span style="color: green">22</span>
@@ -98,10 +110,11 @@ which converts a `tekst` to a `broj`. If you need a `logički` value, you can us
 Keep in mind that the `unos` function reads a line of input. This means that multiple words can be read at once. It stops reading
 at a new-line character:
 
-```typescript
-var name = unos("Input your full name: ");
-ispis("Hello " + name);
-```
+<pre>
+<span class="keyword">var</span> name = unos(<span class="string">"Input your full name: "</span>)<span class="keyword">;</span>
+ispis(<span class="string">"Hello "</span> + name)<span class="keyword">;</span>
+</pre>
+
 <pre>
 Input your full name: 
 <span style="color: green">Bosscript Programming Language</span>

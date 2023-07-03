@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Flow Control
+translation: "/kontrola-toka"
+---
+
 # Flow Control
 
 ## If statement

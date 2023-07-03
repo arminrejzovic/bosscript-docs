@@ -1,3 +1,10 @@
+---
+layout: '../layouts/DocumentationLayout.astro'
+title: Početak
+translation: "/en/getting-started"
+index: 1
+next: "/standardni-ulaz-izlaz"
+---
 # Getting Started
 
 ## Download Java
@@ -37,9 +44,9 @@ Open your editor of choice and create an empty project. Create a Bosscript file 
 In this example we will use *main.boss*. Bosscript files don't have an entry point, i.e a main() function. Instead, the
 whole contents of the file is interpreted in order. We will write a classic *Hello World* example below:
 
- ```typescript
- ispis("Hello, World!");
- ```
+<pre>
+ispis(<span class="string">"Hello, World!"</span>)<span class="keyword">;</span>
+</pre>
 
 It's that simple! Just one line of code. To learn more Bosscript concepts, keep reading the documentation. Good luck!
 

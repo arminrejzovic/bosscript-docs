@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Type Definitions
+translation: "/kreiranje-tipova"
+---
+
 # Type Definitions
 
 Bosscript comes with some built-in types, such as `broj`, `tekst` and `logički`. However, sometimes there is a need for 

@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Loops
+translation: "/petlje"
+---
+
 # Loops
 
 ## For loop

@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Models
+translation: "/modeli"
+---
+
 # Models
 
 Models are Bosscript's approach to Object-Oriented Programming (OOP). A Model encapsulates data and behavior, and is a template

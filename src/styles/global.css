@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+html{
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    /*background-image: linear-gradient(to right top, #051937, #001943, #00174e, #001559, #010f62);*/
+    color: var(--text);
+    background-color: var(--background);
+}
+
+code, pre {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+p > code {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bolder;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-color: var(--active);
+    color: var(--active);
+}
+
+body {
+    margin: 0;
+}
+
+pre {
+    margin-top: 0.75rem;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #2b2b2b;
+    color: white;
+    border: var(--code-border);
+    overflow-x: auto;
+    font-variant-ligatures: none;
+}
+
+.keyword {
+    color: orange;
+}
+
+.comment {
+    color: #7A7E85;
+}
+
+.purple {
+    color: #9876AA;
+}
+
+.number {
+    color: #6897BB;
+}
+
+.string {
+    color: green;
+}
+
+.yellow {
+    color: #FFC66D;
+}
+
+.error {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: red;
+}
+
+:root{
+    --background: #fff;
+    --background-dark: #fff;
+    --text: black;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --active: #001489;
+    --code-border: none;
+    --button-border: black;
+    --code-bg: #f2f2f2;
+    --code-text: black;
+    --arrow-fill: white;
+    --arrow-stroke: black;
+}
+
+html.dark {
+    --background: #2b2d30;
+    --background-dark: #2b2d30;
+    --text: #fff;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow: none;
+    --code-border: 1px solid silver;
+    --active: yellow;
+    --button-border: silver;
+    --code-bg: rgba(0, 0, 0, 0.15);
+    --code-text: white;
+    --arrow-fill: black;
+    --arrow-stroke: white;
+}
+
+html.dark #hamburger {
+    filter: invert(100%);
+}
+
+
+table {
+    width: 100%;
+    margin-block: 2rem;
+}
+
+th {
+    border: 1px solid var(--text);
+}
+
+tr, td {
+    border: 1px solid var(--text);
+}
+
+
+

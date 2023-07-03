@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Imports
+translation: "/paketi"
+---
+
 # Imports
 
 All imports in Bosscript start with the `paket` keyword, followed by the name of the imported file under double quotes. 

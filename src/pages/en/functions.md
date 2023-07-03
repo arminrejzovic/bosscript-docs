@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Functions
+translation: "/funkcije"
+---
+
 # Functions
 
 Functions in Bosscript are declared using the `funkcija` keyword. The mandatory parts of any function declaration are as

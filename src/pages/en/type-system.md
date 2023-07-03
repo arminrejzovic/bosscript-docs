@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Type System
+translation: "/sistem-tipova"
+---
+
 # Type System
 
 ## The types

@@ -1,3 +1,9 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Variables
+translation: "/varijable"
+---
+
 # Variables
 
 With Bosscript being a dynamic programming language, any variable can hold any type of data. 
