@@ -27,7 +27,7 @@ The folder structure looks like this:
     * models
 
 <pre>
-paket "./homeworks/hw1.boss";
+<span class="keyword">paket</span> <span class="string">"./homeworks/hw1.boss"</span><span class="keyword">;</span>
 </pre>
 
 In this case, `project` is the working directory, and `hw1.boss` is looked up with a path relative to the `project` directory.
@@ -35,7 +35,7 @@ In this case, `project` is the working directory, and `hw1.boss` is looked up wi
 You can also provide an absolute path:
 
 <pre>
-paket "C:\\Users\\armin\\Bosscript\\Examples\\example.boss";
+<span class="keyword">paket</span> <span class="string">"C:\\Users\\armin\\Bosscript\\Examples\\example.boss"</span><span class="keyword">;</span>
 </pre>
 
 Remember to escape the backslashes!
@@ -43,8 +43,8 @@ Remember to escape the backslashes!
 **Standard library packages** are imported slightly differently. It is enough to specify the name of the package:
 
 <pre>
-paket "strukture";
-paket "telnet";
+<span class="keyword">paket</span> <span class="string">"strukture"</span><span class="keyword">;</span>
+<span class="keyword">paket</span> <span class="string">"telnet"</span><span class="keyword">;</span>
 </pre>
 
 You don't even need the `.boss` extension. All standard library package names are known to the Bosscript interpreter and 
@@ -56,7 +56,7 @@ Sometimes you don't need to import the entire package. You just need a specific 
  case, you can specify what you need using the partial import syntax:
 
 <pre>
-paket "strukture"{ Mapa };
+<span class="keyword">paket</span> <span class="string">"strukture"</span>{ Mapa }<span class="keyword">;</span>
 </pre>
 
 In this example, we are importing `Mapa` from the standard library package `strukture`. The `strukture` package contains
@@ -65,29 +65,29 @@ various data structures, and most of the time you will not need all of them.
 This works for user-created files too. Suppose the contents of `hw1.boss` is as follows:
 
 <pre>
-var x = 10;
+<span class="keyword">var</span> x = <span class="number">10</span><span class="keyword">;</span>
 
-var y = 6;
+<span class="keyword">var</span> y = <span class="number">6</span><span class="keyword">;</span>
 
-funkcija test(){...}
+<span class="keyword">funkcija</span> test(){...}
 
-funkcija example(){...}
+<span class="keyword">funkcija</span> example(){...}
 
-funkcija sum(){...}
+<span class="keyword">funkcija</span> sum(){...}
 
-za svako (x od 1 do 10){...}
+<span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">1</span> <span class="keyword">do</span> <span class="number">10</span>){...}
 
-model Example{...}
+<span class="keyword">model</span> Example{...}
 </pre>
 
 Here is how you would import the variable `x`, the function `sum` , and the model `Example` :
 
 <pre>
-paket "./homeworks/hw1.boss" {
-    x,
-    test,
+<span class="keyword">paket</span> <span class="string">"./homeworks/hw1.boss"</span> {
+    x<span class="keyword">,</span>
+    test<span class="keyword">,</span>
     Example    
-};
+}<span class="keyword">;</span>
 </pre>
 
 It is a good practice to import only the values you need, both for the sake of performance and in order to not clutter the 
@@ -97,19 +97,19 @@ You can import any variable, function, Model definition and type definition from
 at the top level. You cannot import values from nested blocks:
 
 <pre>
-// example.boss
+<span class="comment">// example.boss</span>
 
-ako(tačno){
-    var x = 10;
+<span class="keyword">ako</span>(<span class="keyword">tačno</span>){
+    <span class="keyword">var</span> x = <span class="number">10</span><span class="keyword">;</span>
 }
 </pre>
 
 If we try to import `x` from the file `example.boss`, an error will occur:
 
 <pre>
-paket "./example.boss" {x};
+<span class="keyword">paket</span> <span class="string">"./example.boss"</span> {x}<span class="keyword">;</span>
 
-ispis(x);
+ispis(x)<span class="keyword">;</span>
 </pre>
 
 <code style="color: red;">
@@ -119,15 +119,15 @@ Error: z does not exist
 You can write import statements anywhere in a Bosscript file, but it is a best practice to keep all imports at the top of the file.
 
 <pre>
-paket "IO";
+<span class="keyword">paket</span> <span class="string">"IO"</span><span class="keyword">;</span>
 
-funkcija useIO(){
+<span class="keyword">funkcija</span> useIO(){
     ...
 }
 
-paket "sistem";
+<span class="keyword">paket</span> <span class="string">"sistem"</span><span class="keyword">;</span>
 
-funkcija useSistem(){
+<span class="keyword">funkcija</span> useSistem(){
     ...
 }
 </pre>
@@ -135,14 +135,14 @@ funkcija useSistem(){
 The code above is valid, but it is better if you write it like this:
 
 <pre>
-paket "IO";
-paket "sistem";
+<span class="keyword">paket</span> <span class="string">"IO"</span><span class="keyword">;</span>
+<span class="keyword">paket</span> <span class="string">"sistem"</span><span class="keyword">;</span>
 
-funkcija useIO(){
+<span class="keyword">funkcija</span> useIO(){
     ...
 }
 
-funkcija useSistem(){
+<span class="keyword">funkcija</span> useSistem(){
     ...
 }
 </pre>

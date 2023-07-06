@@ -271,7 +271,7 @@ declared in the public block can be accessed by anyone anywhere.
 <pre>
 <span class="keyword">var</span> user = User(<span class="string">"Bosscript"</span>)<span class="keyword">;</span>
 
-ispis(user.name)<span class="keyword">;</span>
+ispis(user.<span class="purple">name</span>)<span class="keyword">;</span>
 </pre>
 
 
@@ -283,7 +283,7 @@ In the example model `User`, `name` was declared in the private block, and tryin
 an error. On the other hand, `getName` was declared in the public block, so it can be accessed just fine:
 
 <pre>
-ispis(user.getName())<span class="keyword">;</span>
+ispis(user.<span class="purple">getName</span>())<span class="keyword">;</span>
 </pre>
 
 <pre>
@@ -451,7 +451,7 @@ parent model and provide a new implementation:
 }
 
 <span class="keyword">var</span> b = B()<span class="keyword">;</span>
-b.test()<span class="keyword">;</span>
+b.<span class="purple">test</span>()<span class="keyword">;</span>
 </pre>
 
 
@@ -477,14 +477,14 @@ You can call the parent's implementation of the method you are overriding. To do
    ...
     <span class="keyword">javno</span> {
         <span class="keyword">funkcija</span> test(){
-            <span class="keyword">vrati</span> (<span class="purple">@y</span> * <span class="purple">@y</span>) + <span class="purple">@__roditelj__</span>.test()<span class="keyword">;</span>
+            <span class="keyword">vrati</span> (<span class="purple">@y</span> * <span class="purple">@y</span>) + <span class="purple">@__roditelj__</span>.<span class="purple">test</span>()<span class="keyword">;</span>
         }
     }
 }
 
 <span class="keyword">var</span> b = B(<span class="number">4</span><span class="keyword">,</span> <span class="number">3</span>)<span class="keyword">;</span>
 
-ispis(b.test())<span class="keyword">;</span>
+ispis(b.<span class="purple">test</span>())<span class="keyword">;</span>
 </pre>
 
 
@@ -503,26 +503,26 @@ It is also possible to override model fields:
 <span class="keyword">model</span> A{
     ...
     <span class="keyword">javno</span> {
-        <span class="keyword">var</span> overriden = netačno<span class="keyword">;</span>
+        <span class="keyword">var</span> overriden = <span class="keyword">tačno</span><span class="keyword">;</span>
     }
 }
 
 <span class="keyword">model</span> B < A {
    ...
     <span class="keyword">javno</span> {
-        <span class="keyword">var</span> overriden = tačno<span class="keyword">;</span>
+        <span class="keyword">var</span> overriden = <span class="keyword">tačno</span><span class="keyword">;</span>
     }
 }
 
 <span class="keyword">var</span> b = B()<span class="keyword">;</span>
 
-ispis(b.overriden)<span class="keyword">;</span>
+ispis(b.<span class="purple">overridden</span>)<span class="keyword">;</span>
 </pre>
 
 
 <pre>
 Output:
-tačno
+<span class="keyword">tačno</span>
 </pre>
 
 In the example above, model `B` overrides the field `overriden`. 
@@ -558,23 +558,23 @@ Here is an example of how you might implement all of these operators in a model:
         <span class="keyword">var</span> x<span class="keyword">,</span> y<span class="keyword">;</span>
 
         <span class="keyword">funkcija</span> plus(drugi: DupliBroj){
-            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> + drugi.x<span class="keyword">,</span> <span class="purple">@y</span> + drugi.y)<span class="keyword">;</span>
+            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> + drugi.<span class="purple">x</span><span class="keyword">,</span> <span class="purple">@y</span> + drugi.<span class="purple">y</span>)<span class="keyword">;</span>
         }
 
         <span class="keyword">funkcija</span> minus(drugi: DupliBroj){
-            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> - drugi.x<span class="keyword">,</span> <span class="purple">@y</span> - drugi.y)<span class="keyword">;</span>
+            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> - drugi.<span class="purple">x</span><span class="keyword">,</span> <span class="purple">@y</span> - drugi.<span class="purple">y</span>)<span class="keyword">;</span>
         }
 
         <span class="keyword">funkcija</span> puta(drugi: DupliBroj){
-            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> * drugi.x<span class="keyword">,</span> <span class="purple">@y</span> * drugi.y)<span class="keyword">;</span>
+            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> * drugi.<span class="purple">x</span><span class="keyword">,</span> <span class="purple">@y</span> * drugi.<span class="purple">y</span>)<span class="keyword">;</span>
         }
 
         <span class="keyword">funkcija</span> podijeljeno(drugi: DupliBroj){
-            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> / drugi.x<span class="keyword">,</span> <span class="purple">@y</span> / drugi.y)<span class="keyword">;</span>
+            <span class="keyword">vrati</span> DupliBroj(<span class="purple">@x</span> / drugi.<span class="purple">x</span><span class="keyword">,</span> <span class="purple">@y</span> / drugi.<span class="purple">y</span>)<span class="keyword">;</span>
         }
 
         <span class="keyword">funkcija</span> manjeOd(drugi: DupliBroj): logicki {
-            <span class="keyword">vrati</span> (<span class="purple">@x</span> < drugi.x) && (<span class="purple">@y</span> < drugi.y)<span class="keyword">;</span>
+            <span class="keyword">vrati</span> (<span class="purple">@x</span> < drugi.<span class="purple">x</span>) && (<span class="purple">@y</span> < drugi.<span class="purple">y</span>)<span class="keyword">;</span>
         }
 
         <span class="keyword">funkcija</span> veceOd(drugi: DupliBroj): logicki {
@@ -582,7 +582,7 @@ Here is an example of how you might implement all of these operators in a model:
         }
 
         <span class="keyword">funkcija</span> jednako(drugi: DupliBroj): logički {
-            <span class="keyword">vrati</span> (<span class="purple">@x</span> == drugi.x) && (<span class="purple">@y</span> == drugi.y)<span class="keyword">;</span>
+            <span class="keyword">vrati</span> (<span class="purple">@x</span> == drugi.<span class="purple">x</span>) && (<span class="purple">@y</span> == drugi.<span class="purple">y</span>)<span class="keyword">;</span>
         }
 
         <span class="keyword">funkcija</span> nijeJednako(drugi: DupliBroj): logički {
@@ -606,13 +606,13 @@ accept another instance of the containing model. Sometimes it might make sense t
     }
     <span class="keyword">javno</span> {
         <span class="keyword">funkcija</span> plus(right){
-            <span class="keyword">ako</span> (right.tip == "broj"){
+            <span class="keyword">ako</span> (right.<span class="purple">tip</span> == <span class="string">"broj"</span>){
                 arr.zaSvaki(<span class="keyword">funkcija</span>(it){
                     it += obj<span class="keyword">;</span>
                 })<span class="keyword">;</span>
             }
-            <span class="keyword">ili</span> <span class="keyword">ako</span> (right.tip == "Vector"){
-                <span class="purple">@arr</span> = arr.spoji(right)<span class="keyword">;</span>
+            <span class="keyword">ili</span> <span class="keyword">ako</span> (right.<span class="purple">tip</span> == <span class="string">"Vector"</span>){
+                <span class="purple">@arr</span> = arr.<span class="yellow">spoji</span>(right)<span class="keyword">;</span>
             }
             <span class="keyword">inače</span> {
                 greska(<span class="string">"Incompatible type."</span>)

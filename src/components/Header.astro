@@ -8,11 +8,18 @@ interface Props {
 }
 
 const currentPath = new URL(Astro.request.url).pathname;
-let links;
+let guides;
+let stdlib;
 
 if(currentPath.startsWith("/en")){
     const content = await Astro.glob('../pages/en/*.md');
-    links = content.map(file => ({
+    guides = content.map(file => ({
+        href: file.url,
+        text: file.frontmatter.title,
+        index: file.frontmatter.index
+    }));
+    const stdlibMarkdown = await Astro.glob('../pages/en/stdlib/*.md');
+    stdlib = stdlibMarkdown.map(file => ({
         href: file.url,
         text: file.frontmatter.title,
         index: file.frontmatter.index
@@ -20,14 +27,20 @@ if(currentPath.startsWith("/en")){
 }
 else {
     const content = await Astro.glob('../pages/*.md');
-    links = content.map(file => ({
+    guides = content.map(file => ({
+        href: file.url,
+        text: file.frontmatter.title,
+        index: file.frontmatter.index
+    }));
+    const stdlibMarkdown = await Astro.glob('../pages/stdlib/*.md');
+    stdlib = stdlibMarkdown.map(file => ({
         href: file.url,
         text: file.frontmatter.title,
         index: file.frontmatter.index
     }));
 }
 
-links.sort((a, b) => a.index - b.index);
+guides.sort((a, b) => a.index - b.index);
 
 const { translationAddress } = Astro.props;
 ---
@@ -56,19 +69,39 @@ const { translationAddress } = Astro.props;
     </div>
 </header>
 <nav>
-    <ul>
-        {links.map(link => (
-                <li>
-                    <a
-                        href={link.href}
-                        data-link
-                        class={currentPath === link.href ? "active" : ""}
-                    >
-                        {link.text}
-                    </a>
-                </li>
-        ))}
-    </ul>
+    <details open={!currentPath.includes("stdlib")}>
+        <summary>Basics</summary>
+        <ul>
+            {guides.map(link => (
+                    <li>
+                        <a
+                                href={link.href}
+                                data-link
+                                class={currentPath === link.href ? "active" : ""}
+                        >
+                            {link.text}
+                        </a>
+                    </li>
+            ))}
+        </ul>
+    </details>
+
+    <details open={currentPath.includes("stdlib")}>
+        <summary>Standard Library</summary>
+        <ul>
+            {stdlib.map(link => (
+                    <li>
+                        <a
+                                href={link.href}
+                                data-link
+                                class={currentPath === link.href ? "active" : ""}
+                        >
+                            {link.text}
+                        </a>
+                    </li>
+            ))}
+        </ul>
+    </details>
 </nav>
 
 <script>
@@ -76,14 +109,6 @@ const { translationAddress } = Astro.props;
     const nav = document.querySelector("nav");
     const languagePicker = document.querySelector("#language-picker");
 
-
-    /*document.addEventListener('DOMContentLoaded', () => {
-        const storedLanguagePreference = localStorage.getItem('lang');
-        // Set the stored language preference as the selected option in the <select> element
-        if (storedLanguagePreference) {
-            languagePicker.value = storedLanguagePreference;
-        }
-    });*/
 
     languagePicker.addEventListener("change", (e) => {
         const selectedLanguage = e.target.value;
@@ -146,6 +171,7 @@ const { translationAddress } = Astro.props;
 
     nav ul {
         padding: 0;
+        margin: 0;
     }
 
     nav li {
@@ -157,11 +183,16 @@ const { translationAddress } = Astro.props;
         text-decoration: none;
         color: var(--text);
         font-weight: bolder;
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-left: 1.5rem;
     }
 
     nav li a:hover{
         border-bottom: 2px solid var(--active);
+    }
+
+    nav summary{
+        padding: 1rem;
     }
 
     .active {

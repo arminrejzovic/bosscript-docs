@@ -123,20 +123,20 @@ You can embed JavaScript code directly in your Bosscript file using backticks. T
 snippet as-is. Below is a simple example:
 
 <pre>
-za svako(x od 1 do 10){
-    `console.log(Math.random())`;
+<span class="keyword">za svako</span>(x <span class="keyword">od</span> <span class="number">1</span> <span class="keyword">do</span> <span class="number">10</span>){
+    <span class="string">`</span><span class="purple">console</span>.<span class="yellow">log</span>(<span class="purple">Math</span>.<span class="yellow">random</span>())<span class="string">`</span><span class="keyword">;</span>
 }
 
-`const x = await fetch("https://bosscript.org/api/docs")`;
+<span class="string">`</span><span class="keyword">const</span> x = <span class="keyword">await</span> <span class="yellow">fetch</span>(<span class="string">"https://bosscript.org/api/docs"</span>)<span class="string">`</span><span class="keyword">;</span>
 </pre>
 
 You can even combine both languages in one expression. For example:
 
 <pre>
-konst x = `callingSomeJSFunction()`;
+<span class="keyword">konst</span> x = <span class="string">`</span>callingSomeJSFunction()<span class="string">`</span><span class="keyword">;</span>
 
-za svako(x od `getStartFromJS()` do 10){
-    ispis(`Math.exp(x)`);
+<span class="keyword">za svako</span>(x <span class="keyword">od</span> <span class="string">`</span>getStartFromJS()<span class="string">`</span> <span class="keyword">do</span> <span class="number">10</span>){
+    ispis(<span class="string">`</span><span class="purple">Math</span>.<span class="yellow">exp</span>(x)<span class="string">`</span>)<span class="keyword">;</span>
 }
 </pre>
 

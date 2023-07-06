@@ -1,8 +1,14 @@
+---
+layout: '../../layouts/DocumentationLayout.astro'
+title: Sistem
+translation: "/en/stdlib/sistem"
+---
+
 # Sistem
 
-```typescript
-paket "sistem";
-```
+<pre>
+<span class="keyword">paket</span> "sistem"<span class="keyword">;</span>
+</pre>
 
 The `sistem` package contains a couple of utility system functions. These include:
 1. tempiraj
@@ -20,21 +26,21 @@ The `tempiraj` function is used to measure the execution time of a provided func
 - special cases: none
 
 
-```typescript
-var vrijeme = tempiraj(funkcija(){
-    za svako (x od 1 do 1_000_000){
-        x^2;
+<pre>
+<span class="keyword">var</span> vrijeme = tempiraj(<span class="keyword">funkcija</span>(){
+    <span class="keyword">za svako</span> (x od 1 do 1_000_000){
+        x^2<span class="keyword">;</span>
     }
-});
+})<span class="keyword">;</span>
 
-ispis("Execution time: ", vrijeme, "ms");
-```
+ispis("Execution time: "<span class="keyword">,</span> vrijeme<span class="keyword">,</span> "ms")<span class="keyword">;</span>
+</pre>
 
-```typescript
+<pre>
 Output:
 
 Execution time: 489ms
-```
+</pre>
 
 Note that the lambda function you pass as the argument should not take any arguments itself, nor return anything.
 
@@ -48,23 +54,23 @@ The `tempirajNano` function is used to measure the execution time of a provided 
 - special cases: none
 
 
-```typescript
-paket "sistem";
+<pre>
+<span class="keyword">paket</span> "sistem"<span class="keyword">;</span>
 
-var vrijeme = tempirajNano(funkcija(){
-    za svako (x od 1 do 1_000_000){
-        x^2;
+<span class="keyword">var</span> vrijeme = tempirajNano(<span class="keyword">funkcija</span>(){
+    <span class="keyword">za svako</span> (x od 1 do 1_000_000){
+        x^2<span class="keyword">;</span>
     }
-});
+})<span class="keyword">;</span>
 
-ispis("Execution time: ", vrijeme, " nanoseconds");
-```
+ispis("Execution time: "<span class="keyword">,</span> vrijeme<span class="keyword">,</span> " nanoseconds")<span class="keyword">;</span>
+</pre>
 
-```typescript
+<pre>
 Output:
 
 Execution time: 2.979184E8 nanoseconds
-```
+</pre>
 
 The function behaves exactly the same as `tempiraj`, except for the unit of time it returns.
 
@@ -77,16 +83,16 @@ The `zatvoriProces` function terminates the currently running process with a pro
 - returns: the function doesn't return
 - special cases: none
 
-```typescript
-zatvoriProces(0);
+<pre>
+zatvoriProces(0)<span class="keyword">;</span>
 
 Process finished with exit code 0
-```
+</pre>
 
-```typescript
-zatvoriProces(-1);
+<pre>
+zatvoriProces(-1)<span class="keyword">;</span>
 
 Process finished with exit code -1
-```
+</pre>
 
 By convention, any non-zero exit code indicates an abnormal termination. 

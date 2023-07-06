@@ -49,7 +49,7 @@ pre {
     color: orange;
 }
 
-.comment {
+.comment, .comment > * {
     color: #7A7E85;
 }
 
@@ -75,13 +75,18 @@ pre {
     text-decoration-color: red;
 }
 
+code.error{
+    text-decoration: none;
+    color: red;
+}
+
 :root{
     --background: #fff;
     --background-dark: #fff;
     --text: black;
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --active: #001489;
-    --code-border: none;
+    --code-border: 1px solid #2b2d30;
     --button-border: black;
     --code-bg: #f2f2f2;
     --code-text: black;
@@ -120,6 +125,10 @@ th {
 
 tr, td {
     border: 1px solid var(--text);
+}
+
+details {
+    cursor: pointer;
 }
 
 

@@ -311,7 +311,7 @@ When it comes to Models, the provided object must be an instance of the specifie
         <span class="keyword">var</span> x<span class="keyword">;</span>
     }
     <span class="keyword">konstruktor</span>(x: <span class="keyword">broj</span>){
-        @x = x<span class="keyword">;</span>
+        <span class="purple">@x</span> = x<span class="keyword">;</span>
     }
 }
 
@@ -351,7 +351,7 @@ it has the same fields:
     <span class="purple">x</span>: <span class="number">5</span>
 }<span class="keyword">;</span>
 
-doSomethingWithA(objA)<span class="keyword">;</span>
+doSomethingWithA(<span class="error" title="Type error: Expected 'A', got 'objekat'">objA</span>)<span class="keyword">;</span>
 </pre>
 <code style="color: red">
 Type error: Expected 'A', got 'objekat'

@@ -15,10 +15,10 @@ Bosscript has a very similar concept to `try-catch` - it is called `probaj-spasi
 
 <pre>
 <span class="keyword">probaj</span> {
-    someFunctionThatMayThrowAnException();
+    someFunctionThatMayThrowAnException()<span class="keyword">;</span>
 }
 <span class="keyword">spasi</span> {
-    // Handle exception here
+    <span class="comment">// Handle exception here</span>
 }
 </pre>
 
@@ -28,10 +28,10 @@ Instead, an Exception object is implicitly made available in the `spasi` block u
 
 <pre>
 <span class="keyword">probaj</span> {
-    someFunctionThatMayThrowAnException();
+    someFunctionThatMayThrowAnException()<span class="keyword">;</span>
 }
 <span class="keyword">spasi</span> {
-    ispis(g);
+    ispis(g)<span class="keyword">;</span>
 }
 </pre>
 
@@ -45,20 +45,20 @@ useful methods that you can use to determine which exception occurred:
 
 <pre>
 <span class="keyword">probaj</span> {
-    someFunctionThatMayThrowAnException();
+    someFunctionThatMayThrowAnException()<span class="keyword">;</span>
 }
 <span class="keyword">spasi</span> {
-    <span class="keyword">ako</span>(g.pocinjeNa("...")){
-        <span class="comment">// handle case 1</span>
+    <span class="keyword">ako</span>(g.<span class="yellow">pocinjeNa</span>(<span class="string">"..."</span>)){
+        <span class="comment"><span class="comment">// handle case 1</span></span>
     }
-    <span class="keyword">ili</span> <span class="keyword">ako</span>(g == "..."){
-        <span class="comment">// handle case 2</span>
+    <span class="keyword">ili</span> <span class="keyword">ako</span>(g == <span class="string">"..."</span>){
+        <span class="comment"><span class="comment">// handle case 2</span></span>
     }
-    <span class="keyword">ili</span> <span class="keyword">ako</span>(g.zavrsavaNa("...")){
-        <span class="comment">// handle case 2</span>
+    <span class="keyword">ili</span> <span class="keyword">ako</span>(g.<span class="yellow">zavrsavaNa</span>(<span class="string">"..."</span>)){
+        <span class="comment"><span class="comment">// handle case 2</span></span>
     }
     <span class="keyword">inače</span>{
-        <span class="comment">// default case</span>
+        <span class="comment"><span class="comment">// default case</span></span>
     }
 }
 </pre>
@@ -68,14 +68,14 @@ You can also include an optional `finally` block, a block that will execute rega
 The keyword used is `konačno`:
 
 <pre>
-probaj {
-    someFunctionThatMayThrowAnException();
+<span class="keyword">probaj</span> {
+    someFunctionThatMayThrowAnException()<span class="keyword">;</span>
 }
-spasi {
-    // Handle exception here
+<span class="keyword">spasi</span> {
+    <span class="comment">// Handle exception here</span>
 }
-konačno {
-    // Some code you want to run in both cases
+<span class="keyword">konačno</span> {
+    <span class="comment">// Some code you want to run in both cases</span>
 }
 </pre>
 
@@ -87,9 +87,9 @@ To throw an exeption, just call the built-in `greška` function. There is no spe
 types of exceptions. It's as simple as calling the built-in function:
 
 <pre>
-funkcija mayFail(){
-    ako(failCondition){
-        greška("Fail condition met..");
+<span class="keyword">funkcija</span> mayFail(){
+    <span class="keyword">ako</span>(failCondition){
+        greška(<span class="string">"Fail condition met.."</span>)<span class="keyword">;</span>
     }
 }
 </pre>
