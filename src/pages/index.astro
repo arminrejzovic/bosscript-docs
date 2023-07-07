@@ -34,15 +34,49 @@ import triangle from "../images/triangle.svg";
         </div>
     </div>
     <div id="standout">
-        <div>
-            <h2>Syntax built for Bosnian</h2>
-            <code>Hello world</code>
-        </div>
-        <div>
-            <h2>Ideal for beginners</h2>
-            <code>Hello world</code>
-        </div>
-        <div>
+        <section>
+            <div>
+                <h2>Syntax built for Bosnian</h2>
+                <p>
+                    Bosscript syntax was designed to match Bosnian sentence structure and way of thinking. Keywords and expressions
+                    were carefully chosen, so that each intuitively conveys its purpose to the user, while still preserving the general
+                    appearance of C-family languages.
+                </p>
+            </div>
+
+            <pre>
+<s>class</s> <span class="keyword">model</span>
+<s>super</s> <span class="keyword">prototip</span>
+<s>int, double, float</s> <span class="keyword">broj</span>
+<s>string</s> <span class="keyword">tekst</span>
+<s>boolean</s> <span class="keyword">logički</span>
+<s>for(int i = 0; i < 10; i++;)</s> <span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">0</span> <span class="keyword">do</span> <span class="number">9</span>)
+<s>Example operator+(const Example& e)</s> <span class="keyword">funkcija</span> plus(e: Example)
+</pre>
+        </section>
+        <section >
+
+            <div>
+                <h2>Ideal for beginners</h2>
+                <p>Bosscript is a great choice for your first programming language for several reasons.</p>
+                <p>&#9989; Designed with beginners in mind and what is intuitive for them</p>
+                <p>&#9989; Feature rich and supports multiple paradigms</p>
+                <p>&#9989; Flexible and completely optional type checking</p>
+                <p>&#9989; Promotes good coding practices</p>
+                <p>&#9989; Easy to set up and use</p>
+            </div>
+            <pre is:raw>
+<span class="comment">// No surprises here, loop bounds are inclusive!</span>
+
+<span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">0</span> <span class="keyword">do</span> <span class="number">10</span>){
+    ispis(x)<span class="keyword">;</span>
+}
+
+Output:
+<span class="number">0 1 2 3 4 5 6 7 8 9 10</span>
+</pre>
+        </section>
+        <section>
             <h2>Object oriented</h2>
             <p>Support for object oriented programming with inheritance and encapsulation</p>
             <div class="side-snippets">
@@ -82,8 +116,8 @@ import triangle from "../images/triangle.svg";
     }
 }</pre>
             </div>
-        </div>
-        <div>
+        </section>
+        <section>
             <h2>Functional Programming</h2>
             <p>Support for functional programming with lambda functions and higher-order functions.</p>
             <pre is:raw>
@@ -105,8 +139,8 @@ Output:
 apple
 cherry
 </pre>
-        </div>
-        <div>
+        </section>
+        <section>
             <h2>Transpile to JavaScript</h2>
             <p>Support for lightweight web development through transpiling to JavaScript, including embedding raw JavaScript code</p>
             <div class="side-snippets">
@@ -128,11 +162,15 @@ cherry
 }
 </pre>
             </div>
-        </div>
+        </section>
     </div>
 
-    <div id="stdlib">
-        <p>Vast standard library</p>
+    <section id="stdlib">
+        <h2>Rich standard library</h2>
+        <p>
+            Bosscript has a rich standard library with 10 packages which add many useful features to the language.
+            It includes anything you might need, from dates to telnet support.
+        </p>
         <div id="stdlib-cards">
             <a href="/stdlib/datum">
                 <h3>Dates</h3>
@@ -171,7 +209,7 @@ cherry
                 <img src={telnet} alt="Telnet">
             </a>
         </div>
-    </div>
+    </section>
 </main>
 </body>
 </html>
@@ -185,7 +223,6 @@ cherry
     main {
         width: 80%;
         margin-inline: auto;
-        padding-bottom: 4rem;
         padding-top: 4rem;
     }
 
@@ -205,6 +242,14 @@ cherry
         text-align: center;
     }
 
+    h2 {
+        font-size: 3.5rem;
+    }
+
+    section p {
+        font-size: 1.25rem;
+    }
+
     .hero a {
         background-color: var(--active);
         text-decoration: none;
@@ -218,6 +263,10 @@ cherry
 
     .hero a:hover {
         background-color: var(--active-hover);
+    }
+
+    #standout p {
+        max-width: 80ch;
     }
 
     #stdlib-cards{
@@ -263,6 +312,11 @@ cherry
         margin-top: 0;
     }
 
+    section {
+        min-height: 33dvh;
+        margin-bottom: 6rem;
+    }
+
     .side-snippets {
         display: flex;
         justify-content: space-between;
@@ -276,7 +330,6 @@ cherry
     .side-snippets svg {
         max-width: 5rem;
     }
-
 
     @media (max-width: 480px) {
         body{
@@ -293,6 +346,14 @@ cherry
         .hero h1 {
             text-align: start;
             font-size: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        section p {
+            font-size: 1.1rem;
         }
 
         #stdlib-cards{
