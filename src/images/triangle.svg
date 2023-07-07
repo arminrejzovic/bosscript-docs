@@ -1,0 +1,38 @@
+<svg width="1600" height="1600" viewBox="0 0 1600 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M200 -3.33786e-06L200 200L-3.33786e-06 -3.33786e-06L200 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M400 -3.33786e-06L400 200L200 -3.33786e-06L400 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M600 -3.33786e-06V200L400 -3.33786e-06L600 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.375"/>
+<path d="M800 -3.33786e-06V200L600 -3.33786e-06L800 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.5"/>
+<path d="M1000 -3.33786e-06V200L800 -3.33786e-06L1000 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.625"/>
+<path d="M1200 -3.33786e-06V200L1000 -3.33786e-06L1200 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.75"/>
+<path d="M1400 -3.33786e-06V200L1200 -3.33786e-06L1400 -3.33786e-06Z" fill="#FFCD00" fill-opacity="0.875"/>
+<path d="M1600 -3.33786e-06V200L1400 -3.33786e-06L1600 -3.33786e-06Z" fill="#FFCD00"/>
+<path d="M400 200L400 400L200 200L400 200Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M600 200V400L400 200L600 200Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M800 200V400L600 200L800 200Z" fill="#FFCD00" fill-opacity="0.375"/>
+<path d="M1000 200V400L800 200L1000 200Z" fill="#FFCD00" fill-opacity="0.5"/>
+<path d="M1400 200V400L1200 200L1400 200Z" fill="#FFCD00" fill-opacity="0.75"/>
+<path d="M1200 200V400L1000 200L1200 200Z" fill="#FFCD00" fill-opacity="0.625"/>
+<path d="M1600 200V400L1400 200L1600 200Z" fill="#FFCD00" fill-opacity="0.875"/>
+<path d="M600 400V600L400 400H600Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M800 400V600L600 400H800Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M1000 400V600L800 400H1000Z" fill="#FFCD00" fill-opacity="0.375"/>
+<path d="M1400 400V600L1200 400H1400Z" fill="#FFCD00" fill-opacity="0.625"/>
+<path d="M1200 400V600L1000 400H1200Z" fill="#FFCD00" fill-opacity="0.5"/>
+<path d="M1600 400V600L1400 400H1600Z" fill="#FFCD00" fill-opacity="0.75"/>
+<path d="M800 600V800L600 600H800Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M1000 600V800L800 600H1000Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M1400 600V800L1200 600H1400Z" fill="#FFCD00" fill-opacity="0.5"/>
+<path d="M1200 600V800L1000 600H1200Z" fill="#FFCD00" fill-opacity="0.375"/>
+<path d="M1600 600V800L1400 600H1600Z" fill="#FFCD00" fill-opacity="0.625"/>
+<path d="M1000 800V1000L800 800H1000Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M1400 800V1000L1200 800H1400Z" fill="#FFCD00" fill-opacity="0.375"/>
+<path d="M1200 800V1000L1000 800H1200Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M1600 800V1000L1400 800H1600Z" fill="#FFCD00" fill-opacity="0.5"/>
+<path d="M1200 1000V1200L1000 1000H1200Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M1400 1000V1200L1200 1000H1400Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M1400 1200V1400L1200 1200H1400Z" fill="#FFCD00" fill-opacity="0.125"/>
+<path d="M1600 1000V1200L1400 1000H1600Z" fill="#FFCD00" fill-opacity="0.375"/>
+<path d="M1600 1200V1400L1400 1200H1600Z" fill="#FFCD00" fill-opacity="0.25"/>
+<path d="M1600 1400V1600L1400 1400H1600Z" fill="#FFCD00" fill-opacity="0.125"/>
+</svg>

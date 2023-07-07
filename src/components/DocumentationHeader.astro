@@ -1,15 +1,55 @@
 ---
 import logo from "../images/Logo.svg"
+import hamburger from "../images/hamburger.svg"
 import ThemeIcon from "./ThemeToggle.astro";
 
+interface Props {
+    translationAddress: string;
+}
+
 const currentPath = new URL(Astro.request.url).pathname;
-const translationAddress = currentPath.startsWith("en") ? "/" : "/en"
+let guides;
+let stdlib;
+
+if(currentPath.startsWith("/en")){
+    const content = await Astro.glob('../pages/en/*.md');
+    guides = content.map(file => ({
+        href: file.url,
+        text: file.frontmatter.title,
+        index: file.frontmatter.index
+    }));
+    const stdlibMarkdown = await Astro.glob('../pages/en/stdlib/*.md');
+    stdlib = stdlibMarkdown.map(file => ({
+        href: file.url,
+        text: file.frontmatter.title,
+        index: file.frontmatter.index
+    }));
+}
+else {
+    const content = await Astro.glob('../pages/*.md');
+    guides = content.map(file => ({
+        href: file.url,
+        text: file.frontmatter.title,
+        index: file.frontmatter.index
+    }));
+    const stdlibMarkdown = await Astro.glob('../pages/stdlib/*.md');
+    stdlib = stdlibMarkdown.map(file => ({
+        href: file.url,
+        text: file.frontmatter.title,
+        index: file.frontmatter.index
+    }));
+}
+
+guides.sort((a, b) => a.index - b.index);
+
+const { translationAddress } = Astro.props;
 ---
 
 <header>
     <div id="bosscript-logo">
-        <img src={logo} alt="Bosscript logo" width="32">
-        <h1>Bosscript</h1>
+        <img id="hamburger" src={hamburger} alt="Hamburger menu" width="24">
+        <a href="/"><img src={logo} alt="Bosscript logo" width="32"></a>
+        <a href="/"><h1>Bosscript</h1></a>
     </div>
 
 
@@ -28,6 +68,41 @@ const translationAddress = currentPath.startsWith("en") ? "/" : "/en"
         <ThemeIcon/>
     </div>
 </header>
+<nav>
+    <details open={!currentPath.includes("stdlib")}>
+        <summary>Basics</summary>
+        <ul>
+            {guides.map(link => (
+                    <li>
+                        <a
+                                href={link.href}
+                                data-link
+                                class={currentPath === link.href ? "active" : ""}
+                        >
+                            {link.text}
+                        </a>
+                    </li>
+            ))}
+        </ul>
+    </details>
+
+    <details open={currentPath.includes("stdlib")}>
+        <summary>Standard Library</summary>
+        <ul>
+            {stdlib.map(link => (
+                    <li>
+                        <a
+                                href={link.href}
+                                data-link
+                                class={currentPath === link.href ? "active" : ""}
+                        >
+                            {link.text}
+                        </a>
+                    </li>
+            ))}
+        </ul>
+    </details>
+</nav>
 
 <script>
     const hamburger = document.querySelector("#hamburger");
@@ -62,8 +137,10 @@ const translationAddress = currentPath.startsWith("en") ? "/" : "/en"
         border-bottom: var(--code-border);
     }
 
-    header h1 {
+    header h1, header a {
         margin: 0;
+        text-decoration: none;
+        color: var(--text);
     }
 
     #bosscript-logo{
@@ -158,7 +235,7 @@ const translationAddress = currentPath.startsWith("en") ? "/" : "/en"
     }
 
     #utils label:hover{
-        background-color: rgba(123, 127, 134, 0.65);
+        background-color: var(--hover-bg);
     }
 
     #utils option {

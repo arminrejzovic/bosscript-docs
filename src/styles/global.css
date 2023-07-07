@@ -38,7 +38,7 @@ pre {
     margin-top: 0.75rem;
     padding: 1rem;
     font-size: 1rem;
-    background-color: #2b2b2b;
+    background-color: #1E1F22;
     color: white;
     border: var(--code-border);
     overflow-x: auto;
@@ -86,12 +86,14 @@ code.error{
     --text: black;
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --active: #001489;
+    --active-hover: #2752b3;
     --code-border: 1px solid #2b2d30;
     --button-border: black;
     --code-bg: #f2f2f2;
     --code-text: black;
     --arrow-fill: white;
     --arrow-stroke: black;
+    --hover-bg: rgba(123, 127, 134, 0.2);
 }
 
 html.dark {
@@ -102,11 +104,13 @@ html.dark {
     --shadow: none;
     --code-border: 1px solid silver;
     --active: yellow;
+    --active-hover: #FFB300;
     --button-border: silver;
     --code-bg: rgba(0, 0, 0, 0.15);
     --code-text: white;
     --arrow-fill: black;
     --arrow-stroke: white;
+    --hover-bg: rgba(255, 255, 255, 0.11);
 }
 
 html.dark #hamburger {
@@ -129,6 +133,23 @@ tr, td {
 
 details {
     cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }
 
 
