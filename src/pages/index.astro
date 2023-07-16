@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+import "../styles/index.css";
 import date from "../images/icons/date.svg";
 import file from "../images/icons/files.svg";
 import http from "../images/icons/http.svg";
@@ -13,7 +14,7 @@ import time from "../images/icons/time.svg";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ba">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -26,20 +27,20 @@ import time from "../images/icons/time.svg";
 <Header/>
 <main>
     <div class="hero">
-        <h1>The First Bosnian Programming Language</h1>
+        <h1>Prvi Bosanski Programski Jezik</h1>
         <div id="cta-buttons">
-            <a id="download" href="/">Download now</a>
-            <a id="read-docs" href="/pocetak">Read the docs</a>
+            <a id="download" href="/">Preuzmi</a>
+            <a id="read-docs" href="/pocetak">Dokumentacija</a>
         </div>
     </div>
     <div id="standout">
         <section>
             <div>
-                <h2>Syntax built for Bosnian</h2>
+                <h2>Sintaksa zasnovana na bosanskom jeziku</h2>
                 <p>
-                    Bosscript syntax was designed to match Bosnian sentence structure and way of thinking. Keywords and expressions
-                    were carefully chosen, so that each intuitively conveys its purpose to the user, while still preserving the general
-                    appearance of C-family languages.
+                    Bosscriptova sintaksa je dizajnirana tako da prati bosansku strukturu rečenica i način razmišljanja.
+                    Ključne riječi i izrazi su pažljivo birani kako bi njihova svrha bila intuitivna korisnicima, pritom
+                    držeći se stila jezika iz C-porodice.
                 </p>
             </div>
 
@@ -56,16 +57,16 @@ import time from "../images/icons/time.svg";
         <section >
 
             <div>
-                <h2>Ideal for beginners</h2>
-                <p>Bosscript is a great choice for your first programming language for several reasons.</p>
-                <p>&#9989; Designed with beginners in mind and what is intuitive for them</p>
-                <p>&#9989; Feature rich and supports multiple paradigms</p>
-                <p>&#9989; Flexible and completely optional type checking</p>
-                <p>&#9989; Promotes good coding practices</p>
-                <p>&#9989; Easy to set up and use</p>
+                <h2>Idealan za početnike</h2>
+                <p>Bosscript je odličan izbor kao vaš prvi programski jezik iz više razloga.</p>
+                <p>&#9989; Dizajniran prvenstveno za početnike</p>
+                <p>&#9989; Jezik bogat opcijama, podržava više paradigmi</p>
+                <p>&#9989; Fleksibilan i potpuno opcionalan type checking</p>
+                <p>&#9989; Promovira dobre programerske prakse i navike</p>
+                <p>&#9989; Jednostavna instalacija i korištenje</p>
             </div>
             <pre is:raw>
-<span class="comment">// No surprises here, loop bounds are inclusive!</span>
+<span class="comment">// U Bosscriptu nema iznenađenja. Granice petlje su tačno onakve kakve očekujete.</span>
 
 <span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">0</span> <span class="keyword">do</span> <span class="number">10</span>){
     ispis(x)<span class="keyword">;</span>
@@ -76,8 +77,8 @@ Output:
 </pre>
         </section>
         <section>
-            <h2>Object oriented</h2>
-            <p>Support for object oriented programming with inheritance and encapsulation</p>
+            <h2>Objektno orijentisano programiranje</h2>
+            <p>Podrška za objektno orijentisano programiranje uključujući nasljeđivanje i enkapsulaciju</p>
             <div class="side-snippets">
             <pre is:raw>
 <span class="keyword">model</span> A {
@@ -117,31 +118,31 @@ Output:
             </div>
         </section>
         <section>
-            <h2>Functional Programming</h2>
-            <p>Support for functional programming with lambda functions and higher-order functions.</p>
+            <h2>Funkcionalno programiranje</h2>
+            <p>Podrška za funkcionalno programiranje uključujući lambda funkcije funkcije višeg reda.</p>
             <pre is:raw>
-<span class="keyword">var</span> fruits = [
-    { <span class="purple">name</span>: <span class="string">"apple"</span><span class="keyword">,</span> <span class="purple">quantity</span>: <span class="number">5</span> }<span class="keyword">,</span>
-    { <span class="purple">name</span>: <span class="string">"banana"</span><span class="keyword">,</span> <span class="purple">quantity</span>: <span class="number">2</span> }<span class="keyword">,</span>
-    { <span class="purple">name</span>: <span class="string">"cherry"</span><span class="keyword">,</span> <span class="purple">quantity</span>: <span class="number">3</span> }<span class="keyword">,</span>
+<span class="keyword">var</span> voce = [
+    { <span class="purple">ime</span>: <span class="string">"jabuka"</span><span class="keyword">,</span> <span class="purple">kolicina</span>: <span class="number">5</span> }<span class="keyword">,</span>
+    { <span class="purple">ime</span>: <span class="string">"banana"</span><span class="keyword">,</span> <span class="purple">kolicina</span>: <span class="number">2</span> }<span class="keyword">,</span>
+    { <span class="purple">ime</span>: <span class="string">"visnja"</span><span class="keyword">,</span> <span class="purple">kolicina</span>: <span class="number">3</span> }<span class="keyword">,</span>
 ]<span class="keyword">;</span>
 
-<span class="comment">// Filter fruits with a quantity greater than 2, sort them in descending order by quantity, keep only fruit names and print them out</span>
+<span class="comment">// Filtriraj voće na one sa količinom većom od 2, sortiraj ih po količini silazno, izdvoji samo imena voća i ispiši ih</span>
 
-fruits
-  .<span class="yellow">filtriraj</span>(<span class="keyword">funkcija</span>(fruit) => fruit.<span class="purple">quantity</span> > <span class="number">2</span>)
-  .<span class="yellow">sortirajSilaznoPo</span>(<span class="string">"quantity"</span>)
-  .<span class="yellow">primijeni</span>(<span class="keyword">funkcija</span>(fruit) => fruit.<span class="purple">name</span>)
+voce
+  .<span class="yellow">filtriraj</span>(<span class="keyword">funkcija</span>(vocka) => vocka.<span class="purple">kolicina</span> > <span class="number">2</span>)
+  .<span class="yellow">sortirajSilaznoPo</span>(<span class="string">"kolicina"</span>)
+  .<span class="yellow">primijeni</span>(<span class="keyword">funkcija</span>(vocka) => vocka.<span class="purple">ime</span>)
   .<span class="yellow">zaSvaki</span>(ispis)<span class="keyword">;</span>
 
 Output:
-apple
-cherry
+jabuka
+visnja
 </pre>
         </section>
         <section>
-            <h2>Transpile to JavaScript</h2>
-            <p>Support for lightweight web development through transpiling to JavaScript, including embedding raw JavaScript code</p>
+            <h2>Transpilacija u JavaScript</h2>
+            <p>Podrška za razvoj manjih web aplikacija kroz transpilaciju u JavaScript, uključujući direktno umetnut JavaScript kod</p>
             <div class="side-snippets">
                 <pre is:raw>
 <span class="keyword">var</span> response = `<span class="keyword">await</span> fetch(<span class="string">"https://bosscript.ba/funfact"</span>)`<span class="keyword">;</span>
@@ -165,26 +166,26 @@ cherry
     </div>
 
     <section id="stdlib">
-        <h2>Rich standard library</h2>
+        <h2>Bogata standardna biblioteka</h2>
         <p>
-            Bosscript has a rich standard library with 10 packages which add many useful features to the language.
-            It includes anything you might need, from dates to telnet support.
+            Bosscript posjeduje bogatu standardnu biblioteku od 10 paketa koji dodaju mnoge korisne opcije,
+            sve od datuma do podrške za Telnet.
         </p>
         <div id="stdlib-cards">
             <a href="/stdlib/datum">
-                <h3>Dates</h3>
+                <h3>Datumi</h3>
                 <img src={date} alt="Date">
             </a>
             <a href="/stdlib/vrijeme">
-                <h3>Time</h3>
+                <h3>Vrijeme</h3>
                 <img src={time} alt="Time">
             </a>
             <a href="/stdlib/http">
-                <h3>Http Requests</h3>
+                <h3>Http</h3>
                 <img src={http} alt="Http">
             </a>
             <a href="/stdlib/io">
-                <h3>Files</h3>
+                <h3>Datoteke</h3>
                 <img src={file} alt="Files">
             </a>
             <a href="/stdlib/json">
@@ -192,15 +193,15 @@ cherry
                 <img src={json} alt="JSON">
             </a>
             <a href="/stdlib/matematika">
-                <h3>Math</h3>
+                <h3>Matematika</h3>
                 <img src={math} alt="Math">
             </a>
             <a href="/stdlib/regex">
-                <h3>Regular Expressions</h3>
+                <h3>Regex</h3>
                 <img src={regex} alt="Regex">
             </a>
             <a href="/stdlib/sistem">
-                <h3>System</h3>
+                <h3>Sistem</h3>
                 <img src={system} alt="System">
             </a>
             <a href="/stdlib/telnet" id="telnet">
@@ -223,159 +224,5 @@ cherry
         width: 80%;
         margin-inline: auto;
         padding-top: 4rem;
-    }
-
-    .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-top: 2rem;
-        height: calc(100dvh - 8rem);
-    }
-
-    .hero h1 {
-        font-size: 7rem;
-        max-width: 20ch;
-        text-align: center;
-    }
-
-    h2 {
-        font-size: 3.5rem;
-    }
-
-    section p {
-        font-size: 1.25rem;
-    }
-
-    .hero a {
-        background-color: var(--active);
-        text-decoration: none;
-        color: var(--arrow-fill);
-        padding: 1rem 2.5rem;
-        text-transform: uppercase;
-        border-radius: 0.5rem;
-        margin-right: 2rem;
-        font-weight: bold;
-    }
-
-    .hero a:hover {
-        background-color: var(--active-hover);
-    }
-
-    #standout p {
-        max-width: 80ch;
-    }
-
-    #stdlib-cards{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    #stdlib-cards > a {
-        text-align: center;
-        padding: 2rem;
-        border: var(--code-border);
-        border-width: 2px;
-        color: var(--text);
-        text-decoration: none;
-        background-color: var(--background);
-    }
-
-    #stdlib-cards > a:hover {
-        background-color: var(--hover-bg);
-        border-color: var(--active);
-        color: var(--active);
-    }
-
-    html #stdlib-cards > a:hover img {
-        filter: invert(14%) sepia(64%) saturate(3660%) hue-rotate(225deg) brightness(83%) contrast(128%);
-    }
-
-    html.dark #stdlib-cards > a:hover img {
-        filter: invert(93%) sepia(83%) saturate(1179%) hue-rotate(357deg) brightness(108%) contrast(105%);
-    }
-
-    html.dark #stdlib-cards img {
-        filter: invert(100%);
-    }
-
-    #stdlib-cards img {
-        max-width: 6rem;
-    }
-
-    #stdlib-cards h3 {
-        margin-top: 0;
-    }
-
-    section {
-        min-height: 33dvh;
-        margin-bottom: 6rem;
-    }
-
-    .side-snippets {
-        display: flex;
-        justify-content: space-between;
-        gap: 2rem;
-    }
-
-    .side-snippets pre {
-        flex-grow: 1;
-    }
-
-    .side-snippets svg {
-        max-width: 5rem;
-    }
-
-    @media (max-width: 480px) {
-        body{
-            background-size: 135%;
-        }
-
-        main {
-            width: 90%;
-        }
-        .hero{
-            height: calc(100dvh - 6rem);
-        }
-
-        .hero h1 {
-            text-align: start;
-            font-size: 4rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-        }
-
-        section p {
-            font-size: 1.1rem;
-        }
-
-        #stdlib-cards{
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        #telnet{
-            grid-column-end: span 2;
-         }
-
-        .side-snippets {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #arrow {
-            margin: auto;
-            rotate: 90deg;
-        }
-
-        .hero a {
-            padding: 1rem 1.75rem;
-            margin-right: 0.5rem;
-        }
     }
 </style>

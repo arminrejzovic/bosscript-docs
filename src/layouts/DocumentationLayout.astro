@@ -1,6 +1,7 @@
 ---
 import Header from "../components/DocumentationHeader.astro";
-import "../styles/global.css"
+import "../styles/global.css";
+import "../styles/documentation.css";
 const {content, headings} = Astro.props;
 const currentPath = new URL(Astro.request.url).pathname;
 let next, previous;
@@ -223,6 +224,14 @@ else {
 
     #previous-next svg {
         max-width: 3rem;
+    }
+
+    #previous-next p {
+        font-size: initial;
+    }
+
+    #previous-next h3 {
+        font-size: 1.25rem;
     }
 
     @media (max-width: 480px) {

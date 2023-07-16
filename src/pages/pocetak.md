@@ -7,6 +7,8 @@ next: "/standardni-ulaz-izlaz"
 ---
 # Getting Started
 
+<section>
+
 ## Download Java
 
 Bosscript runs on the Java Virtual Machine, so Java is required to execute Bosscript code. If you
@@ -18,6 +20,11 @@ do not already have Java on your machine, you can install it from the official J
 4. Linux: https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248231_ce59cff5c23f4e2eaf4e778a117d4c5b
 
 For more information, visit the [installation site](https://www.java.com/en/download/manual.jsp).
+
+</section>
+
+
+<section>
 
 ## Download Bosscript
 
@@ -33,10 +40,18 @@ Once installation is complete, to run Bosscript execute the command
 If you want to use Bosscript for the web,
 use `bosscript file.boss destination.js` to transpile your Bosscript code to JavaScript.
 
+</section>
+
+<section>
+
 ## Syntax highlighting
 
 If you are using Visual Studio Code, you can install the Bosscript Syntax highlighting extension from the [Visual Studio
 Marketplace](https://marketplace.visualstudio.com/items?itemName=fwcd.kotlin).
+
+</section>
+
+<section>
 
 ## Your first Bosscript program
 
@@ -50,7 +65,7 @@ ispis(<span class="string">"Hello, World!"</span>)<span class="keyword">;</span>
 
 It's that simple! Just one line of code. To learn more Bosscript concepts, keep reading the documentation. Good luck!
 
-
+</section>
 
 
 

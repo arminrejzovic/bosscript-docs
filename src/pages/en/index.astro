@@ -1,2 +1,382 @@
-<h1>ENGLISH</h1>
-<a href="/exceptions">EXCEPTIONS</a>
+---
+import Header from "../../components/Header.astro";
+import "../../styles/global.css";
+import "../../styles/index.css";
+import date from "../../images/icons/date.svg";
+import file from "../../images/icons/files.svg";
+import http from "../../images/icons/http.svg";
+import json from "../../images/icons/json.svg";
+import math from "../../images/icons/math.svg";
+import regex from "../../images/icons/regex.svg";
+import system from "../../images/icons/system.svg";
+import telnet from "../../images/icons/telnet.svg";
+import time from "../../images/icons/time.svg";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="../../src/images/Logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Bosscript</title>
+</head>
+<body>
+
+<Header/>
+<main>
+    <div class="hero">
+        <h1>The First Bosnian Programming Language</h1>
+        <div id="cta-buttons">
+            <a id="download" href="/">Download now</a>
+            <a id="read-docs" href="/pocetak">Read the docs</a>
+        </div>
+    </div>
+    <div id="standout">
+        <section>
+            <div>
+                <h2>Syntax built for Bosnian</h2>
+                <p>
+                    Bosscript syntax was designed to match Bosnian sentence structure and way of thinking. Keywords and expressions
+                    were carefully chosen, so that each intuitively conveys its purpose to the user, while still preserving the general
+                    appearance of C-family languages.
+                </p>
+            </div>
+
+            <pre>
+<s>class</s> <span class="keyword">model</span>
+<s>super</s> <span class="keyword">prototip</span>
+<s>int, double, float</s> <span class="keyword">broj</span>
+<s>string</s> <span class="keyword">tekst</span>
+<s>boolean</s> <span class="keyword">logički</span>
+<s>for(int i = 0; i < 10; i++;)</s> <span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">0</span> <span class="keyword">do</span> <span class="number">9</span>)
+<s>Example operator+(const Example& e)</s> <span class="keyword">funkcija</span> plus(e: Example)
+</pre>
+        </section>
+        <section >
+
+            <div>
+                <h2>Ideal for beginners</h2>
+                <p>Bosscript is a great choice for your first programming language for several reasons.</p>
+                <p>&#9989; Designed with beginners in mind and what is intuitive for them</p>
+                <p>&#9989; Feature rich and supports multiple paradigms</p>
+                <p>&#9989; Flexible and completely optional type checking</p>
+                <p>&#9989; Promotes good coding practices</p>
+                <p>&#9989; Easy to set up and use</p>
+            </div>
+            <pre is:raw>
+<span class="comment">// No surprises here, loop bounds are inclusive!</span>
+
+<span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">0</span> <span class="keyword">do</span> <span class="number">10</span>){
+    ispis(x)<span class="keyword">;</span>
+}
+
+Output:
+<span class="number">0 1 2 3 4 5 6 7 8 9 10</span>
+</pre>
+        </section>
+        <section>
+            <h2>Object oriented</h2>
+            <p>Support for object oriented programming with inheritance and encapsulation</p>
+            <div class="side-snippets">
+            <pre is:raw>
+<span class="keyword">model</span> A {
+    <span class="keyword">konstruktor</span>(a: <span class="keyword">broj</span>){
+        <span class="purple">@a</span> = a<span class="keyword">;</span>
+    }
+    <span class="keyword">privatno</span> {
+        <span class="keyword">var</span> a<span class="keyword">;</span>
+    }
+    <span class="keyword">javno</span> {
+        <span class="keyword">funkcija</span> getA() {
+            <span class="keyword">vrati</span> <span class="purple">@a</span><span class="keyword">;</span>
+        }
+        <span class="keyword">funkcija</span> setA(a: <span class="keyword">broj</span>) {
+            <span class="purple">@a</span> = a<span class="keyword">;</span>
+        }
+    }
+}
+</pre>
+                <pre is:raw>
+<span class="keyword">model</span> B < A {
+    <span class="keyword">konstruktor</span>(a: <span class="keyword">broj</span>, b: <span class="keyword">broj</span>){
+        <span class="keyword">prototip</span>(a)<span class="keyword">;</span>
+        <span class="purple">@b</span> = b<span class="keyword">;</span>
+    }
+
+    <span class="keyword">privatno</span> {
+        <span class="keyword">var</span> b<span class="keyword">;</span>
+    }
+
+    <span class="keyword">javno</span> {
+        <span class="keyword">funkcija</span> test() {
+            ispis(<span class="string">"["</span> + <span class="purple">@a</span> + <span class="string">","</span> + <span class="purple">@b</span> + <span class="string">"]"</span>)<span class="keyword">;</span>
+        }
+    }
+}</pre>
+            </div>
+        </section>
+        <section>
+            <h2>Functional Programming</h2>
+            <p>Support for functional programming with lambda functions and higher-order functions.</p>
+            <pre is:raw>
+<span class="keyword">var</span> fruits = [
+    { <span class="purple">name</span>: <span class="string">"apple"</span><span class="keyword">,</span> <span class="purple">quantity</span>: <span class="number">5</span> }<span class="keyword">,</span>
+    { <span class="purple">name</span>: <span class="string">"banana"</span><span class="keyword">,</span> <span class="purple">quantity</span>: <span class="number">2</span> }<span class="keyword">,</span>
+    { <span class="purple">name</span>: <span class="string">"cherry"</span><span class="keyword">,</span> <span class="purple">quantity</span>: <span class="number">3</span> }<span class="keyword">,</span>
+]<span class="keyword">;</span>
+
+<span class="comment">// Filter fruits with a quantity greater than 2, sort them in descending order by quantity, keep only fruit names and print them out</span>
+
+fruits
+  .<span class="yellow">filtriraj</span>(<span class="keyword">funkcija</span>(fruit) => fruit.<span class="purple">quantity</span> > <span class="number">2</span>)
+  .<span class="yellow">sortirajSilaznoPo</span>(<span class="string">"quantity"</span>)
+  .<span class="yellow">primijeni</span>(<span class="keyword">funkcija</span>(fruit) => fruit.<span class="purple">name</span>)
+  .<span class="yellow">zaSvaki</span>(ispis)<span class="keyword">;</span>
+
+Output:
+apple
+cherry
+</pre>
+        </section>
+        <section>
+            <h2>Transpile to JavaScript</h2>
+            <p>Support for lightweight web development through transpiling to JavaScript, including embedding raw JavaScript code</p>
+            <div class="side-snippets">
+                <pre is:raw>
+<span class="keyword">var</span> response = `<span class="keyword">await</span> fetch(<span class="string">"https://bosscript.ba/funfact"</span>)`<span class="keyword">;</span>
+<span class="keyword">var</span> element = `<span class="purple">document</span>.<span class="yellow">querySelector</span>(<span class="string">"#element"</span>)`<span class="keyword">;</span>
+<span class="keyword">za svako</span> (x <span class="keyword">od</span> <span class="number">0</span> <span class="keyword">do</span> <span class="number">10</span> <span class="keyword">korak</span> <span class="number">2</span>){
+    ispis(x)<span class="keyword">;</span>
+}
+</pre>
+                <svg id="arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="var(--text)" fill="var(--text)" clip-rule="evenodd" d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z"/>
+                </svg>
+                <pre is:raw>
+<span class="keyword">let</span> response = <span class="keyword">await</span> fetch(<span class="string">"https://bosscript.ba/funfact"</span>)<span class="keyword">;</span>
+<span class="keyword">let</span> element = <span class="purple">document</span>.<span class="yellow">querySelector</span>(<span class="string">"#element"</span>)<span class="keyword">;</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">0</span><span class="keyword">;</span> i <= <span class="number">10</span><span class="keyword">;</span> i += <span class="number">2</span><span class="keyword">;</span>) {
+    <span class="purple">console</span>.<span class="yellow">log</span>(x)<span class="keyword">;</span>
+}
+</pre>
+            </div>
+        </section>
+    </div>
+
+    <section id="stdlib">
+        <h2>Rich standard library</h2>
+        <p>
+            Bosscript has a rich standard library with 10 packages which add many useful features to the language.
+            It includes anything you might need, from dates to telnet support.
+        </p>
+        <div id="stdlib-cards">
+            <a href="en/stdlib/datum">
+                <h3>Dates</h3>
+                <img src={date} alt="Date">
+            </a>
+            <a href="en/stdlib/vrijeme">
+                <h3>Time</h3>
+                <img src={time} alt="Time">
+            </a>
+            <a href="en/stdlib/http">
+                <h3>Http Requests</h3>
+                <img src={http} alt="Http">
+            </a>
+            <a href="en/stdlib/io">
+                <h3>Files</h3>
+                <img src={file} alt="Files">
+            </a>
+            <a href="en/stdlib/json">
+                <h3>JSON</h3>
+                <img src={json} alt="JSON">
+            </a>
+            <a href="en/stdlib/matematika">
+                <h3>Math</h3>
+                <img src={math} alt="Math">
+            </a>
+            <a href="en/stdlib/regex">
+                <h3>Regular Expressions</h3>
+                <img src={regex} alt="Regex">
+            </a>
+            <a href="en/stdlib/sistem">
+                <h3>System</h3>
+                <img src={system} alt="System">
+            </a>
+            <a href="en/stdlib/telnet" id="telnet">
+                <h3>Telnet</h3>
+                <img src={telnet} alt="Telnet">
+            </a>
+        </div>
+    </section>
+</main>
+</body>
+</html>
+
+<style>
+    body {
+        background: url("../../images/trianglexl.svg") no-repeat;
+        background-size: 60%;
+        background-position: top right;
+    }
+    main {
+        width: 80%;
+        margin-inline: auto;
+        padding-top: 4rem;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+        height: calc(100dvh - 8rem);
+    }
+
+    .hero h1 {
+        font-size: 7rem;
+        max-width: 20ch;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 3.5rem;
+    }
+
+    section p {
+        font-size: 1.25rem;
+    }
+
+    .hero a {
+        background-color: var(--active);
+        text-decoration: none;
+        color: var(--arrow-fill);
+        padding: 1rem 2.5rem;
+        text-transform: uppercase;
+        border-radius: 0.5rem;
+        margin-right: 2rem;
+        font-weight: bold;
+    }
+
+    .hero a:hover {
+        background-color: var(--active-hover);
+    }
+
+    #standout p {
+        max-width: 80ch;
+    }
+
+    #stdlib-cards{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    #stdlib-cards > a {
+        text-align: center;
+        padding: 2rem;
+        border: var(--code-border);
+        border-width: 2px;
+        color: var(--text);
+        text-decoration: none;
+        background-color: var(--background);
+    }
+
+    #stdlib-cards > a:hover {
+        background-color: var(--hover-bg);
+        border-color: var(--active);
+        color: var(--active);
+    }
+
+    html #stdlib-cards > a:hover img {
+        filter: invert(14%) sepia(64%) saturate(3660%) hue-rotate(225deg) brightness(83%) contrast(128%);
+    }
+
+    html.dark #stdlib-cards > a:hover img {
+        filter: invert(93%) sepia(83%) saturate(1179%) hue-rotate(357deg) brightness(108%) contrast(105%);
+    }
+
+    html.dark #stdlib-cards img {
+        filter: invert(100%);
+    }
+
+    #stdlib-cards img {
+        max-width: 6rem;
+    }
+
+    #stdlib-cards h3 {
+        margin-top: 0;
+    }
+
+    section {
+        min-height: 33dvh;
+        margin-bottom: 6rem;
+    }
+
+    .side-snippets {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .side-snippets pre {
+        flex-grow: 1;
+    }
+
+    .side-snippets svg {
+        max-width: 5rem;
+    }
+
+    @media (max-width: 480px) {
+        body{
+            background-size: 135%;
+        }
+
+        main {
+            width: 90%;
+        }
+        .hero{
+            height: calc(100dvh - 6rem);
+        }
+
+        .hero h1 {
+            text-align: start;
+            font-size: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        section p {
+            font-size: 1.1rem;
+        }
+
+        #stdlib-cards{
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #telnet{
+            grid-column-end: span 2;
+        }
+
+        .side-snippets {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #arrow {
+            margin: auto;
+            rotate: 90deg;
+        }
+
+        .hero a {
+            padding: 1rem 1.75rem;
+            margin-right: 0.5rem;
+        }
+    }
+</style>

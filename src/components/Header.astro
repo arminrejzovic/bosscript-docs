@@ -3,7 +3,7 @@ import logo from "../images/Logo.svg"
 import ThemeIcon from "./ThemeToggle.astro";
 
 const currentPath = new URL(Astro.request.url).pathname;
-const translationAddress = currentPath.startsWith("en") ? "/" : "/en"
+const translationAddress = currentPath.includes("/en") ? "/" : "/en"
 ---
 
 <header>
@@ -37,6 +37,7 @@ const translationAddress = currentPath.startsWith("en") ? "/" : "/en"
 
     languagePicker.addEventListener("change", (e) => {
         const selectedLanguage = e.target.value;
+        console.log(selectedLanguage);
         localStorage.setItem('lang', selectedLanguage);
         window.location.pathname = languagePicker.dataset["translation"];
     })

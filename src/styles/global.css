@@ -8,16 +8,21 @@ html{
     background-color: var(--background);
 }
 
-code, pre {
-    font-family: 'JetBrains Mono', monospace;
+::selection {
+    background-color: var(--active);
+    color: var(--arrow-fill);
 }
 
-p > code {
+code, pre {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.5;
+}
+
+code {
     background: var(--code-bg);
     color: var(--code-text);
-    padding: 0.35rem 0.5rem;
-    font-size: 0.75rem;
-    font-weight: bolder;
+    font-size: 1rem;
+    padding: 0.2rem 0.4rem;
 }
 
 *, *::before, *::after{
@@ -106,8 +111,8 @@ html.dark {
     --active: yellow;
     --active-hover: #FFB300;
     --button-border: silver;
-    --code-bg: rgba(0, 0, 0, 0.15);
-    --code-text: white;
+    --code-bg: #383838;
+    --code-text: #FFF;
     --arrow-fill: black;
     --arrow-stroke: white;
     --hover-bg: rgba(255, 255, 255, 0.11);
