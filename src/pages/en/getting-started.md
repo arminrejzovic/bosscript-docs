@@ -2,6 +2,8 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Getting Started
 translation: "/pocetak"
+index: 1
+next: "/en/standard-input-output"
 ---
 # Getting Started
 
@@ -15,7 +17,7 @@ do not already have Java on your machine, you can install it from the official J
 3. MAC OS X: https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248234_ce59cff5c23f4e2eaf4e778a117d4c5b
 4. Linux: https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248231_ce59cff5c23f4e2eaf4e778a117d4c5b
 
-For more information, visit the [installation site](https://www.java.com/en/download/manual.jsp).
+For more information, visit the [installation site](https://www.java.com//en/download/manual.jsp).
 
 ## Download Bosscript
 
@@ -42,7 +44,7 @@ Open your editor of choice and create an empty project. Create a Bosscript file 
 In this example we will use *main.boss*. Bosscript files don't have an entry point, i.e a main() function. Instead, the
 whole contents of the file is interpreted in order. We will write a classic *Hello World* example below:
 
- ```typescript
+ ```bosscript
  ispis("Hello, World!");
  ```
 

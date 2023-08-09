@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Functions
 translation: "/funkcije"
+index: 8
+next: "/en/models"
+previous: "/en/loops"
 ---
 
 # Functions
@@ -16,7 +19,7 @@ follows:
 
 This is what a basic function declaration looks like:
 
-```typescript
+```bosscript
 funkcija greeting(){
     ispis("Hello, world!")
 }
@@ -25,7 +28,7 @@ funkcija greeting(){
 Function names must be unique. There can be only one function with a particular name, and a function name cannot be an identifier
 that was already used a variable:
 
-```typescript
+```bosscript
 var greeting = "Hello";
 
 funkcija greeting(){
@@ -37,7 +40,7 @@ funkcija greeting(){
 Error: 'greeting' has already been defined
 </code>
 
-```typescript
+```bosscript
 funkcija greeting(){
     ispis("Hello, world!")
 }
@@ -53,14 +56,14 @@ Error: 'greeting' has already been defined
 
 Parameters are comma separated and must be unique.
 
-```typescript
+```bosscript
 funkcija test(a, b, c){
     ispis(a + b + c);
 }
 ```
 is valid, but
 
-```typescript
+```bosscript
 funkcija test(a, b, a){
     ispis(a + b + a);
 }
@@ -74,7 +77,7 @@ is not.
 
 Functions are called like this:
 
-```typescript
+```bosscript
 // No arguments
 greeting();
 
@@ -84,7 +87,7 @@ greeting("Bosscript");
 // Multiple arguments
 test(1, 5, 2);
 ```
-```typescript
+```bosscript
 Hello, world!
 Hello, Bosscript
 8
@@ -92,7 +95,7 @@ Hello, Bosscript
 
 Make sure to provide an adequate number of arguments, otherwise you will get an Argument mismatch error:
 
-```typescript
+```bosscript
 test(1,2);
 ```
 <code style="color: red">
@@ -102,7 +105,7 @@ Argument mismatch: function 'test' expects 3 arguments (a: nepoznato, b: nepozna
 
 A function body is usually a block:
 
-```typescript
+```bosscript
 funkcija test(){
     doSomething();
     doSomethingElse();
@@ -111,14 +114,14 @@ funkcija test(){
 
 However, if the function body is only one line, you can use the arrow syntax:
 
-```typescript
+```bosscript
 funkcija greet() => ispis("Hello, world!");
 ```
 
 So far, all functions provided as examples had no return statements. So, how do return statements work in Bosscript? It 
 depends on whether a value is being returned. If you are returning a value, use the keyword `vrati`, followed by the value:
 
-```typescript
+```bosscript
 funkcija sum(a, b){
     vrati a + b;
 }
@@ -126,7 +129,7 @@ funkcija sum(a, b){
 
 If you want to return from a function without returning any value, i.e., a void-return, use `vrati se`:
 
-```typescript
+```bosscript
 funkcija greet(name){
     ako(name.duzina < 3){
         vrati se;
@@ -141,20 +144,20 @@ doesn't look right and doesn't accurately convey the meaning of the statement.
 When writing functions using the arrow syntax, the return statement is omitted. The result of the only statement in the
 function body is implicitly returned.
 
-```typescript
+```bosscript
 funkcija sum(a, b) => a + b;
 
 ispis(sum(5,3));
 ```
 
-```typescript
+```bosscript
 Output:
 8
 ```
 
 In fact, it is not allowed to explicitly write `vrati` when using the arrow syntax:
 
-```typescript
+```bosscript
 funkcija sum(a, b) => vrati a + b;
 ```
 
@@ -174,14 +177,14 @@ The type annotation system is very flexible. Any parameter can be typed with a t
 If a function has typed parameters, it doesn't have to have a return type specified and vice-versa. If one of the arguments
 is typed, not all of them have to be typed. Consider the examples below:
 
-```typescript
+```bosscript
 funkcija greeting(name: tekst){
     ispis("Hello, " + name);
 }
 ```
 The parameter `name` is specified to be of type `tekst`, but the function has no specified return type.
 
-```typescript
+```bosscript
 funkcija sum(a: broj, b: broj){
     vrati a + b;
 }
@@ -190,7 +193,7 @@ funkcija sum(a: broj, b: broj){
 In this case, both parameters `a` and `b` are typed, while the function still doesn't have a specified return type. We can 
 expand on this example and provide a return type:
 
-```typescript
+```bosscript
 funkcija sum(a: broj, b: broj): broj{
     vrati a + b;
 }
@@ -198,8 +201,8 @@ funkcija sum(a: broj, b: broj): broj{
 
 As mentioned earlier, not all parameters have to be typed. You can omit type annotations on particular parameters if you need to:
 
-```typescript
-fun concat(str: tekst, x): tekst{
+```bosscript
+funkcija concat(str: tekst, x): tekst{
     vrati str + x.tekst();
 }
 ```
@@ -208,7 +211,7 @@ In the example above, the parameter is typed to `tekst`, but `x` has no type ann
 no type annotation, no type checking will be performed on that particular parameter. It is implicitly given the type `nepoznato`,
 and the user can pass a variable of any type for that particular parameter.
 
-```typescript
+```bosscript
 concat("Example", 10);
 
 concat("Example", tačno);
@@ -220,7 +223,7 @@ All examples above are valid calls to the `concat` function defined earlier.
 
 If you pass a value of an incorrect type for a typed parameter, you will get an error:
 
-```typescript
+```bosscript
 concat(10, "Example");
 ```
 <code style="color: red">
@@ -229,7 +232,7 @@ Type error: Expected 'tekst', got `broj'
 
 The same goes for return types:
 
-```typescript
+```bosscript
 fun concat(str: tekst, x): tekst{
     vrati 10;
 }
@@ -243,7 +246,7 @@ Type error: Expected 'tekst', got `broj'
 
 User-defined types and Model names can also be used for Type Annotations:
 
-```typescript
+```bosscript
 tip User{
     name: tekst;
     age: broj;
@@ -257,12 +260,12 @@ funkcija doSomethingWithUser(u: User){
 In the case of user-defined types, you don't have to explicitly use the generated type constructor to pass the type checking.
 Any object that satisfies the type definition completely is accepted:
 
-```typescript
+```bosscript
 var u = User("Bosscript", 1);
 doSomethingWithUser(u);
 ```
 
-```typescript
+```bosscript
 var u = {
     name: "Bosscript",
     age: 1
@@ -271,7 +274,7 @@ var u = {
 doSomethingWithUser(u);
 ```
 
-```typescript
+```bosscript
 doSomethingWithUser({
     name: "Bosscript",
     age: 1
@@ -282,7 +285,7 @@ doSomethingWithUser(u);
 
 All three examples above are valid. The one below, however, is not:
 
-```typescript
+```bosscript
 var u = {
     name: "Bosscript",
     age: 1,
@@ -303,7 +306,7 @@ If you are not familiar with _user-defined types_, you can read more about them 
 
 When it comes to Models, the provided object must be an instance of the specified model or one of its subclasses.
 
-```typescript
+```bosscript
 model A {
     javno {
         var x;
@@ -322,7 +325,7 @@ var a = A(10);
 doSomethingWithA(a);
 ```
 
-```typescript
+```bosscript
 model B < A {
     javno {
         var y;
@@ -344,7 +347,7 @@ Both examples above are valid and will produce no errors.
 Unlike with user-defined types, an object literal cannot be passed to a function that expects a model instance, even if 
 it has the same fields:
 
-```typescript
+```bosscript
 var objA = {
     x: 5
 };
@@ -364,7 +367,7 @@ All functions in Bosscript are closures, which means that they capture the paren
 Functions that are declared at the top level capture the global environment as their parent. In practice, this means that
 any variable declared in the parent environment is also accessible from within the function. Here is an example to illustrate this:
 
-```typescript
+```bosscript
 var x = 10;
 
 funkcija fn(){
@@ -374,7 +377,7 @@ funkcija fn(){
 fn();
 ```
 
-```typescript
+```bosscript
 Output:
 10
 ```
@@ -383,7 +386,7 @@ Even though `x` was declared outside the function `fn`, you can still reference 
 environment.
 This means that any changes to captured values will be reflected in the parent environment as well, so be careful:
 
-```typescript
+```bosscript
 var x = 10;
 
 funkcija fn(){
@@ -395,7 +398,7 @@ fn();
 ispis(x);
 ```
 
-```typescript
+```bosscript
 Output:
 20
 ```
@@ -403,7 +406,7 @@ Output:
 Every function has its own separate environment, which means identifiers that were declared in the parent environment can
 be reused in the function environment:
 
-```typescript
+```bosscript
 var x = 10;
 
 funkcija fn(){
@@ -417,7 +420,7 @@ fn();
 ispis(x);
 ```
 
-```typescript
+```bosscript
 Output:
 15
 10
@@ -432,7 +435,7 @@ the output of the code snippet.
 Bosscript also supports lambda functions - both as variables and for one-time usage. They are declared exactly the same as
 regular functions, except that the name is omitted.
 
-```typescript
+```bosscript
 var fn = funkcija(){
     ispis("Hello");
 }
@@ -445,7 +448,7 @@ function this way. The program will run fine. However, you will mainly be using 
 that accept another function as an argument.
 
 For example, it is much more convenient to type:
-```typescript
+```bosscript
 var obj = {
     greeting: funkcija(){
         ispis("Hello");
@@ -455,7 +458,7 @@ var obj = {
 
 then it is to type:
 
-```typescript
+```bosscript
 funkcija objGreet(){
     ispis("Hello");
 }
@@ -468,13 +471,13 @@ var obj = {
 Some functions accept one or more functions as an argument. This is a common occurrence. Take the built-in `zaSvaki` function
 that is available on `niz`:
 
-```typescript
+```bosscript
 var arr = [1, 4, 8, 4, 3];
 
 arr.zaSvaki(ispis);
 ```
 
-```typescript
+```bosscript
 Output:
 1 4 8 4 3
 ```
@@ -484,7 +487,7 @@ to pass a function we wrote ourselves. It can be done in two ways.
 
 The first option is to declare a function and pass it as a reference:
 
-```typescript
+```bosscript
 var arr = [1, 4, 8, 4, 3];
 
 funkcija writeDouble(n: broj){
@@ -496,7 +499,7 @@ arr.zaSvaki(writeDouble);
 
 or we can declare a lambda function directly in the parentheses of the call expression:
 
-```typescript
+```bosscript
 var arr = [1, 4, 8, 4, 3];
 
 arr.zaSvaki(funkcija(n: broj){
@@ -506,14 +509,14 @@ arr.zaSvaki(funkcija(n: broj){
 
 Both options produce the same output:
 
-```typescript
+```bosscript
 2 8 16 8 6
 ```
 
 Note that lambda functions also support the arrow syntax, just like regular functions. With that in mind, we can rewrite 
 the last example as:
 
-```typescript
+```bosscript
 var arr = [1, 4, 8, 4, 3];
 
 arr.zaSvaki(funkcija(n: broj) => ispis(n*2));

@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Type System
 translation: "/sistem-tipova"
+index: 4
+next: "/en/type-definitions"
+previous: "/en/variables"
 ---
 
 # Type System
@@ -26,7 +29,7 @@ The `broj` type represents all numbers, both integers and floating-point numbers
 type in JavaScript. The maximum value a `broj` holds is 3.4028235 * 10<sup>38</sup>. Under the hood, it uses the `double`
 type from the JVM. Below are some examples:
 
-```typescript
+```bosscript
 var x = 10;
 var y = 1.234;
 var z = 0;
@@ -34,7 +37,7 @@ var z = 0;
 
 `broj` also supports adding underscores as separators, for readability purposes:
 
-```typescript
+```bosscript
 var x = 1_000_000  // valid, holds 1000000 (one million)
 var z = 1_00_00_00 // bad readability, but still valid, holds 1000000 (one million)  
 ```
@@ -45,7 +48,7 @@ However, we do recommend using them consistently and in a way that is readable.
 All commonly used operators are supported by `broj`, including `+`, `-`, `*`, `/`, and `%`. There is also the `^` operator,
 which is used for exponentiation:
 
-```typescript
+```bosscript
 ispis(5^3); // prints 125
 ```
 
@@ -55,7 +58,7 @@ The `tekst` type represents strings. It is a direct equivalent of the `String` t
 between Bosscript's `tekst` and most other string representations in other programming languages is the delimiter. The only
 valid delimiter for `tekst` are double quotes. Single quotes are not allowed:
 
-```typescript
+```bosscript
 var name = "Bosscript";
 var version = '1.0';
 // -----------^------------ Error!
@@ -71,7 +74,7 @@ The `logički` / `logicki` type represents booleans. Both spellings are supporte
 as is the case for all keywords with bosnian-specific letters. It is built on top of JVM `Boolean` and behaves exactly 
 the same. The only difference is the literals themselves, which are Bosnian words:
 
-```typescript
+```bosscript
 var t1 = tačno;
 var t2 = tacno;
 
@@ -89,7 +92,7 @@ The `objekat` type is very similar to JavaScript objects. It is a collection of 
 pairs. Under the hood, it is implemented as a `HashMap`. The keys of an `objekat` are identifiers, while the value can be
 of any type supported by Bosscript. Consider the following example:
 
-```typescript
+```bosscript
 var empty = {};
 
 var obj = {
@@ -109,13 +112,13 @@ var obj = {
 
 The `obj` object holds data of various types. To access any of the properties, use the dot syntax:
 
-```typescript
+```bosscript
 ispis(obj.b); // prints 1
 ```
 
 Trying to access a property that doesn't exist will result in an error:
 
-```typescript
+```bosscript
 obj.rand;
 // ^---------- Error!
 ```
@@ -124,20 +127,20 @@ obj.rand;
 
 Properties can also be accessed with the bracket indexing operator, where the property is referenced as a string literal:
 
-```typescript
+```bosscript
 obj["c"] // evaluates to tačno
 ```
 
 Trying to access a property that doesn't exist with the bracket operator also results in an error:
 
-```typescript
+```bosscript
 obj["rand"]
 // ^---------- Error!
 ```
 
 However, it is possible to assign to properties that don't already exist:
 
-```typescript
+```bosscript
 obj.notDefinedYet = "NOW DEFINED";
 obj["notDefined"] = "NOW DEFINED TOO";
 ```
@@ -146,14 +149,14 @@ Both expressions above are valid and will create new properties on the `obj` obj
 
 An object property can also be a function. We see that `obj.f` is a function expression. Here is how to use it:
 
-```typescript
+```bosscript
 obj.f();
 // prints 'fn' to the console
 ```
 
 When defining an object function, you can reference other object properties within the function, via `@`:
 
-```typescript
+```bosscript
 var o = {
     name: "Bosscript",
     greet: funkcija(){
@@ -170,7 +173,7 @@ The `@` symbol is a reference to the object itself. It is the equivalent of the 
 Using `@`, you can access any object property within object functions. You cannot use `@` outside of object methods. Consider
 this example:
 
-```typescript
+```bosscript
 var o = {
     x: 1,
     y: 5,
@@ -189,7 +192,7 @@ The `niz` type represents arrays. It behaves similarly to JavaScript's `array` o
 In Bosscript, an array is dynamic, meaning it can hold data of different data types at once. An array literal is written
 as a comma separated list of values between brackets. Consider the following example:
 
-```typescript
+```bosscript
 var empty = [];
 var a = [1, 2, 3, 4, 5];
 var b = [1, "2", 3, "4", tačno];
@@ -200,7 +203,7 @@ All four declarations above are valid, and they demonstrate the flexibility of `
 
 A `niz` is indexable using the bracket indexing operator, just like arrays in most programming languages:
 
-```typescript
+```bosscript
 var arr = ["A", "B", "C"];
 ispis(arr[0]); // prints 'A'
 ```
@@ -209,7 +212,7 @@ Indexes are 0-based, like in most other programming languages.
 
 There are two ways to loop over a `niz`, either manually, or with the `zaSvaki` property, which is built into `niz`:
 
-```typescript
+```bosscript
 var arr = ["A", "B", "C"];
 za svako (i od 0 do arr.zadnji()){
     ispis(arr[i]);
@@ -218,7 +221,7 @@ za svako (i od 0 do arr.zadnji()){
 // prints A B C to the console
 ```
 
-```typescript
+```bosscript
 var arr = ["A", "B", "C"];
 arr.zaSvaki(ispis);
 
@@ -240,7 +243,7 @@ encounter `BajtNiz` when working with the `telnet` standard library package.
 A `funkcija` represents a function. Just like in JavaScript and some other languages, a function can be passed around as
 an argument. Refering back to the `zaSvaki` example from before,
 
-```typescript
+```bosscript
 var arr = ["A", "B", "C"];
 arr.zaSvaki(ispis);
 
@@ -249,7 +252,7 @@ arr.zaSvaki(ispis);
 we can see that `ispis` is being passed as an argument to the `zaSvaki` function. It is also possible to build anonymous
 lambda functions in-place in situations like this:
 
-```typescript
+```bosscript
 var arr = ["A", "B", "C"];
 arr.zaSvaki(funkcija(str){
     ispis(str.malimSlovima());
@@ -269,7 +272,7 @@ is a translation of *undefined,* and it was chosen because the Bosnian language 
 
 `nedefinisano` can be used to initialize variables, but there is no need, since not providing any initial value does exactly that:
 
-```typescript
+```bosscript
 var nd = nedefinisano;
 var x;
 
@@ -282,7 +285,7 @@ ispis(x);
 It doesn't have any built-in functionality and attempting to access a property of a `nedefinisano` variable will result in
 an error:
 
-```typescript
+```bosscript
 var str = getValueOrNull()
 ispis(str);
 // prints nedefinisano
@@ -297,7 +300,7 @@ The `ReadonlyObject` is a type that is only used internally. It is an extension 
 the fact that its properties cannot be changed. Since many of the standard library packages provide objects, a special type
 was built to make sure the user doesn't reassign any of their properties accidentally. Below is an example:
 
-```typescript
+```bosscript
 var klijent = TelnetKlijent();
 
 klijent.ulazniTok = netačno;

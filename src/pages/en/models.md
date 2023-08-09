@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Models
 translation: "/modeli"
+index: 9
+next: "/en/imports"
+previous: "/en/functions"
 ---
 
 # Models
@@ -21,7 +24,7 @@ A model definition consists of the following components:
 Model names follow the same rules as variable names. However, the convention is to capitalize them, i.e, to use UpperCamelCase.
 A model name cannot coincide with an existing identifier (function or variable name).
 
-```typescript
+```bosscript
 var x = 10;
 
 model x {...}
@@ -32,7 +35,7 @@ Error: x has already been defined.
 </code>
 
 The example below shows the conventional way of naming models: 
-```typescript
+```bosscript
 model Example{...}
 
 model ExampleMultipleWords{...}
@@ -50,7 +53,7 @@ The order in which the three appear also doesn't matter. The only rule is that t
 
 Consider the following example of a very basic model:
 
-```typescript
+```bosscript
 model User{
     privatno {
         var name;
@@ -69,7 +72,7 @@ model User{
 
 Writing anything other than the private block, public block or constructor within the model body will result in an error:
 
-```typescript
+```bosscript
 model Example {
     za svako(x od 1 do 10){
         ...
@@ -91,7 +94,7 @@ version you are using, Bosscript might allow you to write return statements insi
 You might think that allowing only one constructor is too limiting, but anything that can be achieved with multiple constructors
 can also be achieved with one:
 
-```typescript
+```bosscript
 model Example{
     konstruktor(a, b, c){
         ako(!a){
@@ -123,7 +126,7 @@ This means that any combination of (`a`, `b` and `c`) can be passed. This is the
 
 A constructor can initialize properties that were not declared as variables in the private or public blocks: 
 
-```typescript
+```bosscript
 model Example {
     privatno {
         var x;
@@ -150,7 +153,7 @@ Notice that there is no `new` keyword when calling a constructor. It is enough t
 // JavaScript
 const example = new Example();
 ```
-```typescript
+```bosscript
 // Bosscript
 var example = Example();
 ```
@@ -163,7 +166,7 @@ and other similar languages.
 
 Usage of `@` is not limited to constructors. You can use it anywhere within the class to refer to the instance:
 
-```typescript
+```bosscript
 model Example{
     privatno {
         var x;
@@ -180,7 +183,7 @@ model Example{
 
 In fact, referring to model properties without `@` will result in an error: 
 
-```typescript
+```bosscript
 model Example{
     privatno {
         var x;
@@ -206,7 +209,7 @@ an access modifier in front of every variable and function, Bosscript users simp
 was inspired by C++, but unlike C++, Bosscript uses real blocks delimited by curly braces. This also encourages users to organize
 their code in a consistent matter, and helps them visually separate the functionality of their models.
 
-```javascript
+```cpp
 // C++
 class Example{
 private:
@@ -221,7 +224,7 @@ public:
 }
 ```
 
-```typescript
+```bosscript
 // Bosscript
 model Example{
     privatno {
@@ -239,7 +242,7 @@ model Example{
 Within both the private and the public block, only variable and function declarations are allowed. Other statements will
 cause an error:
 
-```typescript
+```bosscript
 model Example {
     privatno {
         za svako(x od 1 do 10){
@@ -256,7 +259,7 @@ Error: Expected model member declaration, got 'ForStatement'.
 All variables and functions declared in the private block are inaccessible from the outside, while all variables and functions
 declared in the public block can be accessed by anyone anywhere.
 
-```typescript
+```bosscript
 var user = User("Bosscript");
 
 ispis(user.name);
@@ -269,10 +272,10 @@ Error: 'name' is private.
 In the example model `User`, `name` was declared in the private block, and trying to access it outside the class causes 
 an error. On the other hand, `getName` was declared in the public block, so it can be accessed just fine:
 
-```typescript
+```bosscript
 ispis(user.getName());
 ```
-```typescript
+```bosscript
 Output:
 Bosscript
 ```
@@ -284,7 +287,7 @@ inheritance, but the concepts are exactly the same as in most programming langua
 There is no support for multiple inheritance. There is no keyword like `extends`, instead use the `<` symbol. This syntax
 was inspired by Ruby:
 
-```typescript
+```bosscript
 model A {
     ...
 }
@@ -296,7 +299,7 @@ model B < A {
 
 A model cannot extend a type definition:
 
-```typescript
+```bosscript
 tip T {
     x: broj;
 }
@@ -319,7 +322,7 @@ to say that `supermodel` would not be a good choice of keyword.
 The `prototip` call must be the first expression in the inheriting model's constructor. Trying to access `@` before calling
 `prototip()` will result in an error:
 
-```typescript
+```bosscript
 model A {
     privatno {
         var x;
@@ -351,7 +354,7 @@ Error: Constructors for derived classes must contain a 'prototip' call.
 
 The proper way to do it is shown below:
 
-```typescript
+```bosscript
 model A {
     privatno {
         var x;
@@ -382,7 +385,7 @@ In Bosscript, a child model has access to all private fields of its parent model
 more like `protected` fields. You can access any private field of any model that is higher up in the inheritance chain simply
 with the `@` reference:
 
-```typescript
+```bosscript
 model A {
     privatno {
         var x;
@@ -414,7 +417,7 @@ and its children.
 A child model may override a method of its parent model. To do this, simply declare a method by the same name as in the 
 parent model and provide a new implementation:
 
-```typescript
+```bosscript
 model A {
     javno {
         funkcija test(){
@@ -435,7 +438,7 @@ var b = B();
 b.test();
 ```
 
-```typescript
+```bosscript
 Output:
 20
 ```
@@ -443,7 +446,7 @@ Output:
 You can call the parent's implementation of the method you are overriding. To do so, you will need to reference the 
 `__roditelj__` object, which represents the parent model. 
 
-```typescript
+```bosscript
 model A{
     ...
     javno {
@@ -467,7 +470,7 @@ var b = B(4, 3);
 ispis(b.test());
 ```
 
-```typescript
+```bosscript
 Output:
 25
 ```
@@ -478,7 +481,7 @@ calls `A`'s implementation with the expression `@__roditelj__.test()`. That expr
 
 It is also possible to override model fields:
 
-```typescript
+```bosscript
 model A{
     ...
     javno {
@@ -498,7 +501,7 @@ var b = B();
 ispis(b.overriden);
 ```
 
-```typescript
+```bosscript
 Output:
 tačno
 ```
@@ -525,7 +528,7 @@ public function under a specified name. Here is the comprehensive list:
 
 Here is an example of how you might implement all of these operators in a model:
 
-```typescript
+```bosscript
 model DupliBroj {
     konstruktor(x, y){
         @x = x;
@@ -576,7 +579,7 @@ operator functions may return a value of any type, but most of the time, you wil
 All operator functions can have only one parameter. The parameter can be of any type, but most of the time you will want to
 accept another instance of the containing model. Sometimes it might make sense to accept an argument of another type:
 
-```typescript
+```bosscript
 model Vector{
     ...
     privatno {

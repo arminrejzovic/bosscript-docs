@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Standard input and output
 translation: "/standardni-ulaz-izlaz"
+index: 2
+next: "/en/variables"
+previous: "/en/getting-started"
 ---
 
 # Standard input and output
@@ -11,15 +14,15 @@ translation: "/standardni-ulaz-izlaz"
 In Bosscript, there are multiple ways to print to the standard output, depending on what you want the message to look like.
 The function you will be using the most is definitely `ispis`, which is a standard printing function:
 
-```typescript
+```bosscript
 ispis("Hello, world!");
 ```
 
 The `ispis` function is very flexible. It takes in any number of arguments and arguments of any type. Here is an example:
 
-```typescript
+```bosscript
 var name = "Bosscript";
-var version = 1.0
+var version = 1.0;
 ispis("Hello, my name is ", name, ". I am in version ", version);
 
 // prints 'Hello, my name is Bosscript. I am in version 1.0'
@@ -38,7 +41,7 @@ Native functions are stringified as such: `ƒ <name>() {[native code]}`.
 
 You can also pass any expression that evaluates to `tekst` to the `ispis` function:
 
-```typescript
+```bosscript
 ispis("Hello, " + getName());
 ```
 
@@ -48,7 +51,7 @@ ispis("Hello, " + getName());
 warnings and errors to the standard output and come with built-in styling, similar to JavaScript's `console.warn` and `console.error`
 functions. 
 
-```typescript
+```bosscript
 upozorenje("Empty output");
 ```
 
@@ -56,7 +59,7 @@ upozorenje("Empty output");
 ⚠ Empty output
 </code>
 
-```typescript
+```bosscript
 greska("Cannot divide by zero!");
 ```
 
@@ -73,7 +76,7 @@ The built-in `unos` function is used to collect input from the user. The functio
 function - it is possible to pass a message that is printed before input is collected, and input is collected in one line
 and returned as a `tekst`. Consider the example below:
 
-```typescript
+```bosscript
 var name = unos("Input your name: ");
 ispis("Hello " + name);
 ```
@@ -88,7 +91,7 @@ In this example, the user is asked to input their name. The prompt is passed to 
 The name is collected as a `tekst` and printed to the console. But what if you need to input a value that is not a `tekst`?
 Consider the example below:
 
-```typescript
+```bosscript
 var age = brojOd(unos("How old are you: "));
 ispis(age);
 ```
@@ -104,7 +107,7 @@ which converts a `tekst` to a `broj`. If you need a `logički` value, you can us
 Keep in mind that the `unos` function reads a line of input. This means that multiple words can be read at once. It stops reading
 at a new-line character:
 
-```typescript
+```bosscript
 var name = unos("Input your full name: ");
 ispis("Hello " + name);
 ```

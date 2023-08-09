@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Bosslang",
+  "patterns": [
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#object_methods"
+    },
+    {
+      "include": "#import_macro"
+    },
+    {
+      "include": "#property_access"
+    },
+    {
+        "include": "#embedded_js"
+    }
+  ],
+  "repository": {
+    "strings": {
+      "name": "strings",
+      "patterns": [
+        {
+          "match": "\"[^\"]*\"",
+          "name": "string.quoted.double",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.string.begin"
+            },
+            "1": {
+              "name": "constant.character.escape"
+            },
+            "2": {
+              "name": "punctuation.definition.string.end"
+            }
+          }
+        },
+        {
+          "match": "\\\"|\\\\n|\\\\r|\\\\t|\\\\\\\\",
+          "name": "constant.character.escape"
+        }
+      ]
+    },
+    "comments": {
+      "name": "comments",
+      "patterns": [
+        {
+          "match": "//.*$",
+          "name": "comment.line"
+        }
+      ]
+    },
+    "numbers": {
+      "name": "numbers",
+      "patterns": [
+        {
+          "match": "-?[0-9]+(\\.[0-9]+)?(e-?[0-9]+)?",
+          "name": "constant.numeric"
+        }
+      ]
+    },
+    "keywords": {
+      "name": "keywords",
+      "patterns": [
+        {
+          "match": "\\b(var|konst|za|svako|od|do|korak|dok|radi|funkcija|vrati|se|paket|ako|ili|osim|inace|inače|nedefinisano|tacno|netacno|tačno|netačno|model|broj|tekst|logicki|logički|niz|objekat|model|tip|probaj|spasi|konacno|konačno|javno|privatno|konstruktor|prototip|prekid)\\b",
+          "name": "keyword.operator.new"
+        }
+      ]
+    },
+
+    "embedded_js": {
+      "begin": "`",
+      "end": "`",
+      "name": "embedded_js",
+      "contentName": "meta.embedded.js",
+      "patterns": [
+        {
+          "include": "source.js"
+        }
+      ]
+    },
+  
+    "object_methods": {
+      "name": "object_methods",
+      "patterns": [
+        {
+          "match": "\\.[a-zA-Z_$][a-zA-Z_$0-9]*\\(",
+          "name": "variable.other.object"
+        }
+      ]
+    },
+    "import_macro": {
+      "name": "import_macro",
+      "patterns": [
+        {
+          "match": "#paket",
+          "name": "keyword.control.import.bosslang"
+        }
+      ]
+    },
+    "property_access": {
+      "name": "property_access",
+      "patterns": [
+        {
+          "match": "@[a-zA-Z_$][a-zA-Z_$0-9]*",
+          "name": "variable.other.object.property"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.boss"
+}

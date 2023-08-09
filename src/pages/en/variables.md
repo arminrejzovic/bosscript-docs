@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Variables
 translation: "/varijable"
+index: 3
+next: "/en/type-system"
+previous: "/en/standard-input-output"
 ---
 
 # Variables
@@ -14,28 +17,28 @@ There are two types of variables in Bosscript, those declared with `var` and tho
 Variables declared with `var` are mutable, which means that they can be reassigned at any point in the program. They also
 don't need to be explicitly initialized when declared.
 
-```typescript
+```bosscript
 var x;
 ```
 
 The variable `x` from the example above is automatically initialized to `nedefinisano` (null). Of course, it is possible
 to initialize a variable with any expression:
 
-```typescript
+```bosscript
 var x = 10;
 var y = example();
 var z = "Z";
 ```
 You can even initialize a variable to `nedefinisano` explicitly, if you really want to.
 
-```typescript
+```bosscript
 var x = nedefinisano;
 ```
 This can be considered redundant, though.
 
 It is also possible to declare multiple variables at once:
 
-```typescript
+```bosscript
 var x, y;
 ```
 
@@ -43,7 +46,7 @@ In this case, both `x` and `y` are initialized to `nedefinisano`.
 
 Any combination of initialized and non-initialized variables works:
 
-```typescript
+```bosscript
 var x, y = 10;
 var z = 10, s;
 var a, b, c;
@@ -51,7 +54,7 @@ var a, b, c;
 
 As previously mentioned, `var` variables can be reassigned at any point. Consider the example below:
 
-```typescript
+```bosscript
 var x = 10;
 
 x = 20;
@@ -63,7 +66,7 @@ ispis(x); // prints 20
 
 You can also reassign values of other types, like below:
 
-```typescript
+```bosscript
 var x = 10;
 
 x = "Hello";
@@ -75,7 +78,7 @@ In this case, we changed `x` from the number 10 to the string "Hello".
 
 If need be, variables can be reassigned to `nedefinisano` again:
 
-```typescript
+```bosscript
 var x = 10;
 
 x = nedefinisano;
@@ -85,7 +88,7 @@ ispis(x); // prints nedefinisano
 
 The only thing that is not allowed is declaring the same variable multiple times in the same scope:
 
-```typescript
+```bosscript
 var x = 10;
 var x = "Hello"; 
 //--^----------- Error!
@@ -98,7 +101,7 @@ The code above will cause an error: `x has already been defined`
 The keyword `konst` stands for *konstanta* (constant) and, as the name suggests, is used to declare constants. Once defined,
 constants cannot be reassigned. They also must be initialized upon creation, unlike with `var`.
 
-```typescript
+```bosscript
 konst pi = 3.14; // proper
 konst x;
 // ---^------------ Error!
@@ -106,7 +109,7 @@ konst x;
 
 Trying to reassign a `konst` will result in an error `Constants cannot be reassigned`:
 
-```typescript
+```bosscript
 konst x = 10;
 
 x = 20;
@@ -118,7 +121,7 @@ x = 20;
 Contrary to what you may think at first, declaring arrays and objects as `konst` doesn't make them immutable. Instead, it
 just makes the variable un-reassignable. Consider the following example:
 
-```typescript
+```bosscript
 konst obj = {
     a: 10,
     b: 20
@@ -132,7 +135,7 @@ ispis(obj); // prints {a: 20, b: 20}
 The code above is completely valid. If you need your objects to be immutable, consider using [models](/models).
 The same is true for arrays: 
 
-```typescript
+```bosscript
 konst arr = [1, 2, 3, 4];
 
 arr[2] = 999;
@@ -142,7 +145,7 @@ ispis(arr); // prints [1, 2, 999, 4]
 
 This is what `konst` disallows with objects and arrays: 
 
-```typescript
+```bosscript
 konst obj = {
     a: "A",
     b: "B"

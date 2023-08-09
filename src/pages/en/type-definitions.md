@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Type Definitions
 translation: "/kreiranje-tipova"
+index: 5
+next: "/en/flow-control"
+previous: "/en/type-system"
 ---
 
 # Type Definitions
@@ -10,7 +13,7 @@ Bosscript comes with some built-in types, such as `broj`, `tekst` and `logički`
 user-defined types. This is where Type Definitions come in. You can use Bosscript type definitions to define a schema 
 for objects. It is defined with the `tip` keyword. 
 
-```typescript
+```bosscript
 tip User{
     name: tekst;
     age: broj;
@@ -24,7 +27,7 @@ The only difference is that each type definition property ends with a semicolon.
 A type definition, or `tip` for short, can contain properties of any valid type in Bosscript, including other type definitions
 and models.
 
-```typescript
+```bosscript
 tip Course{
     teacher: User;
     classroom: broj;
@@ -33,7 +36,7 @@ tip Course{
 
 A `tip` can also extend other `tip` definitions:
 
-```typescript
+```bosscript
 tip Teacher < User {
     office: tekst;
 }
@@ -46,13 +49,13 @@ The point of extending a `tip` is simply not having to copy and paste properties
 When you declare a `tip`, a constructor is generated for it. You can use the constructor to create objects that comply with
 the type definition:
 
-```typescript
+```bosscript
 var user = User("Bosscript", 1);
 
 ispis(user);
 ```
 
-```typescript
+```bosscript
 Output:
 {name: "Bosscript", age: 1}
 ```
@@ -60,7 +63,7 @@ Output:
 This is not mandatory, though. You can create an object literal that complies with the schema and the Bosscript Type Checker
 will recognize that:
 
-```typescript
+```bosscript
 funkcija test(u: User){
     ...
 }
@@ -81,7 +84,7 @@ then Type Definitions are perfect. If you don't need additional functionality, u
 Here is an example. Suppose you have a function that accepts a bunch of configuration options. Having them all as separate 
 parameters would be unwieldy: 
 
-```typescript
+```bosscript
 funkcija formatImage(image: tekst, hue: broj, saturation: broj, contrast: broj, filter: tekst, ...){
     ...
 }
@@ -89,7 +92,7 @@ funkcija formatImage(image: tekst, hue: broj, saturation: broj, contrast: broj, 
 
 You could combine it all in an object, but not having a type definition for it could lead to errors later:
 
-```typescript
+```bosscript
 funkcija formatImage(image: tekst, config){
     ...
 }
@@ -103,7 +106,7 @@ Error: {...} has no property 'contrast'
 
 The best thing to do is to declare a custom `tip` for the config object:
 
-```typescript
+```bosscript
 tip ImageFormatConfig {
     hue: broj;
     contrast: broj;
@@ -120,6 +123,6 @@ funkcija formatImage(image: tekst, config: ImageFormatConfig){
 formatImage(getImageSrc(), {hue: 10, contrast: 22, saturation: 44, filter: "sepia"});
 ```
 
-If you are familiar with TypeScript's `interface`, `tip` is a similar concept. The difference is that `tip` definitions 
+If you are familiar with bosscript's `interface`, `tip` is a similar concept. The difference is that `tip` definitions 
 don't have functions, and `interfaces` don't provide a constructor.
 

@@ -12,8 +12,8 @@ const sections = headings.filter((h) => {
 
 if(currentPath.startsWith("/en")){
     const all = await Astro.glob('../pages/en/*.md');
-    next = all.find(e => e.url == content.next)
-    previous = all.find(e => e.url == content.previous)
+    next = all.find(e => e.url == content.next);
+    previous = all.find(e => e.url == content.previous);
 }
 else {
     const all = await Astro.glob('../pages/*.md');
@@ -34,7 +34,7 @@ else {
 </head>
 <body>
 
-<Header translationAddress={content.translation}></Header>
+<Header translationAddress={content.translation}/>
 
 <main>
     <span id="sidebar" aria-hidden="true"></span>

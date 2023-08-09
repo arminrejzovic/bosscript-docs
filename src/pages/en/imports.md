@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Imports
 translation: "/paketi"
+index: 10
+next: "/en/exceptions"
+previous: "/en/models"
 ---
 
 # Imports
@@ -23,7 +26,7 @@ The folder structure looks like this:
     * examples
     * models
 
-```typescript
+```bosscript
 paket "./homeworks/hw1.boss";
 ```
 
@@ -31,7 +34,7 @@ In this case, `project` is the working directory, and `hw1.boss` is looked up wi
 
 You can also provide an absolute path:
 
-```typescript
+```bosscript
 paket "C:\\Users\\armin\\Bosscript\\Examples\\example.boss";
 ```
 
@@ -39,7 +42,7 @@ Remember to escape the backslashes!
 
 **Standard library packages** are imported slightly differently. It is enough to specify the name of the package:
 
-```typescript
+```bosscript
 paket "strukture";
 paket "telnet";
 ```
@@ -52,7 +55,7 @@ they come preinstalled with Bosscript.
 Sometimes you don't need to import the entire package. You just need a specific few functions or variables from it. In this
  case, you can specify what you need using the partial import syntax:
 
-```typescript
+```bosscript
 paket "strukture"{ Mapa };
 ```
 
@@ -61,7 +64,7 @@ various data structures, and most of the time you will not need all of them.
 
 This works for user-created files too. Suppose the contents of `hw1.boss` is as follows:
 
-```typescript
+```bosscript
 var x = 10;
 
 var y = 6;
@@ -79,7 +82,7 @@ model Example{...}
 
 Here is how you would import the variable `x`, the function `sum` , and the model `Example` :
 
-```typescript
+```bosscript
 paket "./homeworks/hw1.boss" {
     x,
     test,
@@ -93,7 +96,7 @@ namespace of your current environment.
 You can import any variable, function, Model definition and type definition from a given file, as long as they are declared
 at the top level. You cannot import values from nested blocks:
 
-```typescript
+```bosscript
 // example.boss
 
 ako(tačno){
@@ -103,7 +106,7 @@ ako(tačno){
 
 If we try to import `x` from the file `example.boss`, an error will occur:
 
-```typescript
+```bosscript
 paket "./example.boss" {x};
 
 ispis(x);
@@ -115,7 +118,7 @@ Error: z does not exist
  
 You can write import statements anywhere in a Bosscript file, but it is a best practice to keep all imports at the top of the file.
 
-```typescript
+```bosscript
 paket "IO";
 
 funkcija useIO(){
@@ -131,7 +134,7 @@ funkcija useSistem(){
 
 The code above is valid, but it is better if you write it like this:
 
-```typescript
+```bosscript
 paket "IO";
 paket "sistem";
 

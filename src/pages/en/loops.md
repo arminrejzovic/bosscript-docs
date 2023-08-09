@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Loops
 translation: "/petlje"
+index: 7
+next: "/en/functions"
+previous: "/en/flow-control"
 ---
 
 # Loops
@@ -20,7 +23,7 @@ For loops in Bosscript have a significantly different syntax to most other langu
 
 This is what it looks like in practice:
 
-```typescript
+```bosscript
 za svako (x od 1 do 10 korak 1){
     ispis(x);
 }
@@ -32,7 +35,7 @@ The example above shows a classic for loop which prints the numbers from 1 to 10
 
 The `korak` parameter can be omitted:
 
-```typescript
+```bosscript
 za svako (x od 1 do 10){
     ispis(x);
 }
@@ -43,7 +46,7 @@ za svako (x od 1 do 10){
 In this case, the step gets defaulted to `1`. This works even if the loop is descending. In that case, the step is defaulted
 to `-1` instead:
 
-```typescript
+```bosscript
 za svako (x od 10 do 1){
     ispis(x);
 }
@@ -54,7 +57,7 @@ za svako (x od 10 do 1){
 If you do want to provide a step, it can be any `broj` and any expression evaluating to `broj`, including negative values
 and floating point numbers:
 
-```typescript
+```bosscript
 za svako (x od 1 do 10 korak 2)
 
 za svako (x od 10 do 1 korak -2)
@@ -69,7 +72,7 @@ za svako (x od 10 do 1 korak getStep())
 are all valid for-loop declarations in Bosscript. Be careful not to unintentionally create an infinite loop, since Bosscript
 won't stop you:
 
-```typescript
+```bosscript
 za svako (x od 1 do 10 korak -0.5)
 
 za svako (x od 1 do 10 korak 0)
@@ -86,7 +89,7 @@ in your terminal if declarations like the ones above are found, but the code wil
 The same rules that apply for the `korak` value, apply for `od` and `do` as well. Both need to be a `broj` or an expression
 that evaluates to `broj`. Otherwise, a type error will occur:
 
-```typescript
+```bosscript
 za svako (x od "1" do 10)
 
 za svako (x od 1 do "10")
@@ -99,7 +102,7 @@ Type Error: For loop bounds must be of type broj
 
 On the other hand, all examples below are valid:
 
-```typescript
+```bosscript
 za svako (x od 0 do 1.4 korak 0.2)
 
 za svako (x od -3 do 3.14 korak 0.2)
@@ -112,14 +115,14 @@ za svako (x od getStart() do getEnd() korak getStep())
 The body of the loop is usually written as a block, i.e., between curly braces. However, if your for loop body consists 
 of only one line of code, you can write it using the arrow syntax instead:
 
-```typescript
+```bosscript
 za svako (x od 1 do 10) => ispis(x);
 ```
 
 Most programming languages take the first line of code below a for loop as its body if braces are omitted. This is not 
 allowed in Bosscript:
 
-```typescript
+```bosscript
 za svako (x od 1 do 10)
     ispis(x);
 ```
@@ -139,7 +142,7 @@ to a `logički`.
 
 This is what it looks like:
 
-```typescript
+```bosscript
 var x = 0;
 dok (x < 10) {
     ispis(x);
@@ -151,7 +154,7 @@ dok (x < 10) {
 The condition can be any kind of expression that evaluates to a `logički`, which includes `logički` literals themselves. 
 You can use this to declare an infinite loop, if needed:
 
-```typescript
+```bosscript
 dok (tačno){
     ...
 }
@@ -159,7 +162,7 @@ dok (tačno){
 
 While loops also support the arrow syntax when the body is only one line of code:
 
-```typescript
+```bosscript
 var x = [5,2,10,6];
 
 dok(!x.jePrazan()) => ispis(x.izbaci());
@@ -172,7 +175,7 @@ dok(!x.jePrazan()) => ispis(x.izbaci());
 The do-while loop is very similar to regular while loops. The main difference between them is that, with a do-while loop,
 it is guaranteed that the body of the loop will be executed at least once. The syntax looks like this:
 
-```typescript
+```bosscript
 var x = 0;
 radi {
     ispis(x);
@@ -186,7 +189,7 @@ the do-block is only one line long. Finally, a semicolon is required after the c
 
 As mentioned earlier, the body of a do-while loop will be executed at least once, regardless of the condition:
 
-```typescript
+```bosscript
 radi {
     ispis("This will print at least once");
 }

@@ -2,6 +2,9 @@
 layout: '../../layouts/DocumentationLayout.astro'
 title: Flow Control
 translation: "/kontrola-toka"
+index: 6
+next: "/en/loops"
+previous: "/en/type-definitions"
 ---
 
 # Flow Control
@@ -11,7 +14,7 @@ translation: "/kontrola-toka"
 Beside the keyword used, the if-statement in Bosscript is a direct match of if-statements in most other programming languages.
 The keyword used instead of `if` is `ako`. Consider this basic example:
 
-```typescript
+```bosscript
 ako (x > 10) {
     ispis("x is greater than 10");
 }
@@ -20,7 +23,7 @@ ako (x > 10) {
 The statement expects a `logički` or an expression that evaluates to `logički` as the condition. It is also possible to perform
 null-checks using the logical not `!` operator:
 
-```typescript
+```bosscript
 var questionable = getValueOrNull();
 ako (!questionable) {
     ispis("questionable doesn't exist");
@@ -29,7 +32,7 @@ ako (!questionable) {
 
 That is possible since the expression `!questionable` evaluates to `logički`. The example below, however, is invalid:
 
-```typescript
+```bosscript
 var questionable = getValueOrNull();
 ako (questionable) {
     ispis("questionable exists");
@@ -46,7 +49,7 @@ condition appears, including if-statements.
 The if-statement can have an optional alternate branch. The concept is exactly the same as in 
 most other programming languages:
 
-```typescript
+```bosscript
 var x = brojOd(unos("Input a number: "));
 
 ako (x % 2 == 0) {
@@ -63,7 +66,7 @@ chaining alternate branches (`else if`), and for the ultimate branch (`else {}`)
 for chaining alternate branches, while `inače` is used for the standalone else. This way, the syntax is more in line with
 how the expression would read in conversational Bosnian. 
 
-```typescript
+```bosscript
 var user = getUser();
 
 ako (user.role == "student") {
@@ -79,7 +82,7 @@ inače {
 
 Note that both `inače` and `inace` are valid spellings of the keyword - both are treated the same. This means that both:
 
-```typescript
+```bosscript
 ako (x % 2 == 0) {
     ispis("x is even");
 }
@@ -89,7 +92,7 @@ inače {
 ```
 and: 
 
-```typescript
+```bosscript
 ako (x % 2 == 0) {
     ispis("x is even");
 }
@@ -114,7 +117,7 @@ end
 ```
 
 and the equivalent code in Bosscript:
-```typescript
+```bosscript
 var ime = ...
 
 osim ako(ime.jePrazno()){
@@ -124,7 +127,7 @@ osim ako(ime.jePrazno()){
 
 Both the Ruby and the Bosscript example will evaluate to
 
-```typescript
+```bosscript
 Hello, Bosscript!
 ```
 
@@ -134,7 +137,7 @@ From the example above, it is evident that `unless`/`osim ako` works as an inver
 provided condition to evaluate to `false`/`netačno`, in order for the consequent block to be executed. In other words, every
 unless-statement can be written as an `if-not`.
 
-```typescript
+```bosscript
 osim ako(ime.jePrazno()){
     ispis("Hello, " + ime + "!");
 }
@@ -142,7 +145,7 @@ osim ako(ime.jePrazno()){
 
 and 
 
-```typescript
+```bosscript
 ako(!ime.jePrazno()){
     ispis("Hello, " + ime + "!");
 }
@@ -154,7 +157,7 @@ the classic `if-not` syntax. It sometimes maps better to a Bosnian sentence than
 
 An `osim ako` statement can have an associated `inače` block, but branching is disallowed.
 
-```typescript
+```bosscript
 osim ako(ime.jePrazno()){
     ispis("Hello, " + ime + "!");
 }
@@ -165,7 +168,7 @@ inače {
 
 is valid, but:
 
-```typescript
+```bosscript
 osim ako(ime.jePrazno()){
     ispis("Hello, " + ime + "!");
 }

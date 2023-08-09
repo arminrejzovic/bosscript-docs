@@ -59,12 +59,11 @@ Open your editor of choice and create an empty project. Create a Bosscript file 
 In this example we will use *main.boss*. Bosscript files don't have an entry point, i.e a main() function. Instead, the
 whole contents of the file is interpreted in order. We will write a classic *Hello World* example below:
 
-<pre>
-ispis(<span class="string">"Hello, World!"</span>)<span class="keyword">;</span>
-</pre>
+```bosscript
+ispis("Hello, World!");
+```
 
 It's that simple! Just one line of code. To learn more Bosscript concepts, keep reading the documentation. Good luck!
-
 </section>
 
 

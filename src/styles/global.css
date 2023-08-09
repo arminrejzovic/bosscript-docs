@@ -19,10 +19,9 @@ code, pre {
 }
 
 code {
-    background: var(--code-bg);
+    /*background: var(--code-bg);*/
     color: var(--code-text);
     font-size: 1rem;
-    padding: 0.2rem 0.4rem;
 }
 
 *, *::before, *::after{
@@ -43,7 +42,7 @@ pre {
     margin-top: 0.75rem;
     padding: 1rem;
     font-size: 1rem;
-    background-color: #1E1F22;
+    /*background-color: #1E1F22;*/
     color: white;
     border: var(--code-border);
     overflow-x: auto;
