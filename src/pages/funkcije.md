@@ -19,35 +19,35 @@ follows:
 
 This is what a basic function declaration looks like:
 
-<pre>
-<span class="keyword">funkcija</span> greeting(){
-    ispis(<span class="string">"Hello, world!"</span>)<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija greeting(){
+    ispis("Hello, world!");
 }
-</pre>
+```
 
 Function names must be unique. There can be only one function with a particular name, and a function name cannot be an identifier
 that was already used a variable:
 
-<pre>
-<span class="keyword">var</span> greeting = <span class="string">"Hello"</span><span class="keyword"><span class="keyword">;</span></span>
-<span class="keyword">funkcija</span> <span class="error" title="'greeting' has already been defined">greeting</span>(){
-    ispis(<span class="string">"Hello, world!"</span>)<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+var greeting = "Hello";
+funkcija greeting(){
+    ispis("Hello, world!");
 }
-</pre>
+```
 
 <code style="color: red">
 Error: 'greeting' has already been defined
 </code>
 
-<pre>
-<span class="keyword">funkcija</span> greeting(){
-    ispis(<span class="string">"Hello, world!"</span>)<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija greeting(){
+    ispis("Hello, world!");
 }
 
-<span class="keyword">funkcija</span> <span class="error" title="'greeting' has already been defined">greeting</span>(name){
-    ispis(<span class="string">"Hello, "</span> + name)<span class="keyword"><span class="keyword">;</span></span>
+funkcija greeting(name){
+    ispis("Hello, " + name);
 }
-</pre>
+```
 
 <code style="color: red">
 Error: 'greeting' has already been defined
@@ -55,18 +55,19 @@ Error: 'greeting' has already been defined
 
 Parameters are comma separated and must be unique.
 
-<pre>
-<span class="keyword">funkcija</span> test(a<span class="keyword">,</span> b<span class="keyword">,</span> c){
-    ispis(a + b + c)<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija test(a, b, c){
+    ispis(a + b + c);
 }
-</pre>
+```
+
 is valid, but
 
-<pre>
-<span class="keyword">funkcija</span> test(a<span class="keyword">,</span> b<span class="keyword">,</span> <span class="error" title="'a' has already been defined">a</span>){
-    ispis(a + b + a)<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija test(a, b, a){
+    ispis(a + b + a);
 }
-</pre>
+```
 
 <code style="color: red">
 Error: 'a' has already been defined
@@ -76,27 +77,23 @@ is not.
 
 Functions are called like this:
 
-<pre>
+```bosscript
 // No arguments
-greeting()<span class="keyword"><span class="keyword">;</span></span>
+greeting();
 
 // One argument
-greeting(<span class="string">"Bosscript"</span>)<span class="keyword"><span class="keyword">;</span></span>
+greeting("Bosscript");
 
 // Multiple arguments
-test(<span class="number">1</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">,</span> <span class="number">2</span>)<span class="keyword"><span class="keyword">;</span></span>
-</pre>
-<pre>
-Hello, world!
-Hello, Bosscript
-<span class="number">8</span>
-</pre>
+test(1, 5, 2);
+```
 
 Make sure to provide an adequate number of arguments, otherwise you will get an Argument mismatch error:
 
-<pre>
-<span class="error" title="Argument mismatch: function 'test' expects 3 arguments (a: nepoznato, b: nepoznato, c: nepoznato)">test(<span class="number">1</span><span class="keyword">,</span><span class="number">2</span>)<span class="keyword"><span class="keyword">;</span></span></span>
-</pre>
+```bosscript
+test(1,2);
+```
+
 <code style="color: red">
 Argument mismatch: function 'test' expects 3 arguments (a: nepoznato, b: nepoznato, c: nepoznato)
 </code>
@@ -104,38 +101,38 @@ Argument mismatch: function 'test' expects 3 arguments (a: nepoznato, b: nepozna
 
 A function body is usually a block:
 
-<pre>
-<span class="keyword">funkcija</span> test(){
-    doSomething()<span class="keyword"><span class="keyword">;</span></span>
-    doSomethingElse()<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija test(){
+    doSomething();
+    doSomethingElse();
 }
-</pre>
+```
 
 However, if the function body is only one line, you can use the arrow syntax:
 
-<pre>
-<span class="keyword">funkcija</span> greet() => ispis(<span class="string">"Hello, world!"</span>)<span class="keyword"><span class="keyword">;</span></span>
-</pre>
+```bosscript
+funkcija greet() => ispis("Hello, world!");
+```
 
 So far, all functions provided as examples had no return statements. So, how do return statements work in Bosscript? It 
 depends on whether a value is being returned. If you are returning a value, use the keyword `vrati`, followed by the value:
 
-<pre>
-<span class="keyword">funkcija</span> sum(a<span class="keyword">,</span> b){
-    <span class="keyword">vrati</span> a + b<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija sum(a, b){
+    vrati a + b;
 }
-</pre>
+```
 
 If you want to return from a function without returning any value, i.e., a void-return, use `vrati se`:
 
-<pre>
-<span class="keyword">funkcija</span> greet(name){
-    ako(name.duzina < <span class="number">3</span>){
-        <span class="keyword">vrati se</span><span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija greet(name){
+    ako(name.duzina < 3){
+        vrati se;
     }
-    ispis(<span class="string">"Hello "</span> + name)<span class="keyword"><span class="keyword">;</span></span>
+    ispis("Hello " + name);
 }
-</pre>
+```
 
 The `se` keyword doesn't add any functionality. It is there due to the grammar of the Bosnian language. Writing `vrati` alone
 doesn't look right and doesn't accurately convey the meaning of the statement.
@@ -143,11 +140,11 @@ doesn't look right and doesn't accurately convey the meaning of the statement.
 When writing functions using the arrow syntax, the return statement is omitted. The result of the only statement in the
 function body is implicitly returned.
 
-<pre>
-<span class="keyword">funkcija</span> sum(a<span class="keyword">,</span> b) => a + b<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija sum(a, b) => a + b;
 
-ispis(sum(<span class="number">5</span><span class="keyword">,</span><span class="number">3</span>))<span class="keyword"><span class="keyword">;</span></span>
-</pre>
+ispis(sum(5,3));
+```
 
 <pre>
 Output:
@@ -156,9 +153,9 @@ Output:
 
 In fact, it is not allowed to explicitly write `vrati` when using the arrow syntax:
 
-<pre>
-<span class="keyword">funkcija</span> sum(a<span class="keyword">,</span> b) => <span class="error" title="Unexpected token 'vrati'"><span class="keyword">vrati</span></span> a + b<span class="keyword"><span class="keyword">;</span></span>
-</pre>
+```bosscript
+funkcija sum(a, b) => vrati a + b;
+```
 
 <code style="color: red">
 Parsing error: Unexpected token 'vrati' at 1:23
@@ -176,35 +173,36 @@ The type annotation system is very flexible. Any parameter can be typed with a t
 If a function has typed parameters, it doesn't have to have a return type specified and vice-versa. If one of the arguments
 is typed, not all of them have to be typed. Consider the examples below:
 
-<pre>
-<span class="keyword">funkcija</span> greeting(name: <span class="keyword">tekst</span>){
-    ispis(<span class="string">"Hello, "</span> + name)<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija greeting(name: tekst){
+    ispis("Hello, " + name);
 }
-</pre>
+```
+
 The parameter `name` is specified to be of type `tekst`, but the function has no specified return type.
 
-<pre>
-<span class="keyword">funkcija</span> sum(a: <span class="keyword">broj</span><span class="keyword">,</span> b: <span class="keyword">broj</span>){
-    <span class="keyword">vrati</span> a + b<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija sum(a: broj, b: broj){
+    vrati a + b;
 }
-</pre>
+```
 
 In this case, both parameters `a` and `b` are typed, while the function still doesn't have a specified return type. We can 
 expand on this example and provide a return type:
 
-<pre>
-<span class="keyword">funkcija</span> sum(a: <span class="keyword">broj</span><span class="keyword">,</span> b: <span class="keyword">broj</span>): <span class="keyword">broj</span>{
-    <span class="keyword">vrati</span> a + b<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija sum(a: broj, b: broj): broj{
+    vrati a + b;
 }
-</pre>
+```
 
 As mentioned earlier, not all parameters have to be typed. You can omit type annotations on particular parameters if you need to:
 
-<pre>
-<span class="keyword">funkcija</span> concat(str: <span class="keyword">tekst</span><span class="keyword">,</span> x): <span class="keyword">tekst</span>{
-    <span class="keyword">vrati</span> str + x.tekst()<span class="keyword"><span class="keyword">;</span></span>
+```bosscript
+funkcija concat(str: tekst, x): tekst{
+    vrati str + x.tekst();
 }
-</pre>
+```
 
 In the example above, the parameter is typed to `tekst`, but `x` has no type annotation at all. When a parameter is given 
 no type annotation, no type checking will be performed on that particular parameter. It is implicitly given the type `nepoznato`,
